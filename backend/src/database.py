@@ -1,5 +1,5 @@
 from langchain_community.utilities import SQLDatabase
-from src.config import DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
+from config import DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME
 from loguru import logger
 
 def setup_initial_database() -> SQLDatabase:
@@ -14,7 +14,7 @@ def setup_initial_database() -> SQLDatabase:
     """
     try:
         # Build the database URI for MySQL connection using pymysql as the driver
-        db_uri = f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}'
+        db_uri = f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
         
         # Establish connection to the MySQL database
         db = SQLDatabase.from_uri(db_uri)

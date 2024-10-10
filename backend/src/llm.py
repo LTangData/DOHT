@@ -1,7 +1,7 @@
 import os
 from langchain_openai import ChatOpenAI
 from loguru import logger
-from src.config import OPENAI_API_KEY
+from config import OPENAI_API_KEY
 
 def setup_openai_api() -> ChatOpenAI:
     """

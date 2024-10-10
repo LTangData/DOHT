@@ -2,11 +2,11 @@ import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from src.models import QueryRequest, QueryResponse
-from src.database import setup_initial_database
-from src.llm import setup_openai_api
-from src.chain import create_chain
-from src.log_config import configure_logging
+from models import QueryRequest, QueryResponse
+from database import setup_initial_database
+from llm import setup_openai_api
+from chain import create_chain
+from log_config import configure_logging
 
 from typing import Generator
 

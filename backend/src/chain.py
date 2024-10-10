@@ -5,7 +5,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from operator import itemgetter
 
-from src.utils import extract_sql_from_query
+from utils import extract_sql_from_query
 
 def create_chain(db, llm) -> RunnablePassthrough:
     """
