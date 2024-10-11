@@ -80,7 +80,7 @@ async def query_endpoint(request: QueryRequest) -> QueryResponse:
         return QueryResponse(answer=answer)
     except Exception as e:
         # Handle any exceptions that occur and return a 500 HTTP error
-        raise HTTPException(status_code=500, detail='An unexpected error occurred while processing your request')
+        raise HTTPException(status_code=500, detail=f'{e}')
 
 if __name__ == '__main__':
     # Start the FastAPI app with Uvicorn
