@@ -11,7 +11,7 @@ def configure_logging(file: str) -> None:
     This function ensures that logs are saved in a directory structure, with each log file named after the script.
     """
     # Define the logs directory path
-    logs_dir = Path("logs/")
+    logs_dir = Path("../logs")
     
     # Create the logs directory if it does not exist
     logs_dir.mkdir(parents=True, exist_ok=True)
