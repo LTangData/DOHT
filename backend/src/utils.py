@@ -23,11 +23,11 @@ def extract_sql_from_query(response: str) -> str:
         sql_content = match.group(1).strip()
         # If the content starts with 'SQLQuery:', remove it
         if sql_content.startswith('SQLQuery:'):
-            sql_query = sql_content[len('SQLQuery:'):].lstrip()
-        else:
-            sql_query = sql_content
+            sql_content = sql_content[len('SQLQuery:'):].lstrip()
 
-        return sql_query
+        print(sql_content)
+
+        return sql_content
     
     # Return an empty string if no match is found
     return ''
