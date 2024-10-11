@@ -47,6 +47,7 @@ jsonpatch==1.33
 jsonpointer==3.0.0
 kubernetes==31.0.0
 langchain==0.3.1
+langchain-chroma==0.1.4
 langchain-community==0.3.1
 langchain-core==0.3.6
 langchain-experimental==0.3.1
@@ -114,6 +115,8 @@ shellingham==1.5.4
 six==1.16.0
 sniffio==1.3.1
 SQLAlchemy==2.0.35
+# Editable install with no version control (src==0.0.1)
+-e c:\users\tangb\documents\langara\fall 2024\database\group project\backend
 starlette==0.38.6
 sympy==1.13.3
 tenacity==8.5.0
