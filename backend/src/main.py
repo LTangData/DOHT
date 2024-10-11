@@ -84,4 +84,4 @@ async def query_endpoint(request: QueryRequest) -> QueryResponse:
 
 if __name__ == '__main__':
     # Start the FastAPI app with Uvicorn
-    uvicorn.run('main:app', host='0.0.0.0', port=8000, reload=True)
+    uvicorn.run('main:app', host='0.0.0.0', port=2221, reload=True)
