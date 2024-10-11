@@ -6,6 +6,7 @@ from langchain_core.output_parsers import StrOutputParser
 from operator import itemgetter
 
 from utils import extract_sql_from_query
+from FSL_prompt import final_prompt
 
 def create_chain(db, llm) -> RunnablePassthrough:
     """
@@ -30,14 +31,17 @@ def create_chain(db, llm) -> RunnablePassthrough:
     
     # Chain to generate SQL queries based on user input using the LLM
     write_query = create_sql_query_chain(llm, db)
-    
+
     # Prompt template for answering user questions based on SQL query and result
     answer_prompt = PromptTemplate.from_template(
         '''Given the following user question, corresponding SQL query, and SQL result, answer the user question.
         Question: {question}
         SQL Query: {query}
         SQL Result: {result}
-        Answer: '''
+        Answer: 
+        
+        Remember to provide concise answer to avoid confusion and lengthy responses.
+        '''
     )
 
     # Create the chain: 
@@ -50,7 +54,7 @@ def create_chain(db, llm) -> RunnablePassthrough:
         # Assign SQL execution result after extracting the query from the data
         .assign(result=lambda data: execute_query.invoke({'query': extract_sql_from_query(itemgetter('query')(data))}))
         # Apply the prompt template
-        | answer_prompt
+        | final_prompt
         # Use the LLM to answer the question based on query and result
         | llm
         # Parse the final output as a string
