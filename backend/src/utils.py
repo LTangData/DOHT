@@ -1,5 +1,6 @@
 import re
 
+
 def extract_sql_from_query(response: str) -> str:
     """
     Extracts an SQL query from a GPT-4 response formatted with SQL code blocks.
@@ -15,17 +16,16 @@ def extract_sql_from_query(response: str) -> str:
     Returns:
         str: The extracted SQL query. If no query is found, returns an empty string.
     """
+
+    print(f"Response from LLM:\n{response}")
     # Use regex to match SQL code block between ```sql and ```
     match = re.search(r'```sql(.*?)```', response, re.DOTALL)
 
     if match:
-        # Extract the matched content and strip whitespace.
+        # Extract the matched content and strip whitespace
         sql_content = match.group(1).strip()
-        # If the content starts with 'SQLQuery:', remove it
-        if sql_content.startswith('SQLQuery:'):
-            sql_content = sql_content[len('SQLQuery:'):].lstrip()
 
-        print(sql_content)
+        print(f"SQL Query Extracted:\n{sql_content}")
 
         return sql_content
     
