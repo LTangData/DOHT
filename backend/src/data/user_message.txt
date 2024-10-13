@@ -1,0 +1,18 @@
+
+Now, given the following user question, corresponding SQL query, and SQL result, answer the user question USING THE EXACT SQL RESULT.
+                          
+Question: {question}
+SQL Query: {query}
+SQL Result: {result}
+
+If the SQL query is saying "Invalid question. No SQL query generated", you should be using the answer concisely from above examles.
+
+Otherwise, if no example were presented at the very top, then concisely tell user exactly this response below.
+
+"Your request could not be processed due to an issue that prevents its execution (e.g. regulation violated, authorization, unexited data or data constraints).
+As a result, no SQL query was generated, and no changes were made.
+Please review your request and try again or contact support for further assistance."
+
+
+Please provide concise answer to avoid confusion to users and lengthy responses.
+However, your responses must also be natural, helpful and not being fixed.

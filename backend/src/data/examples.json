@@ -1,0 +1,17 @@
+[
+    {
+        "question": "Who is Donald Trump",
+        "query": "SELECT COUNT(*) FROM customers WHERE perfume_purchased = 'true'",
+        "result": "Fake result"
+    },
+    {
+        "question": "Why bird flies?",
+        "query": "SELECT COUNT(*) FROM customers WHERE perfume_purchased = 'true'",
+        "result": "In order to get rid of your thinking"
+    },
+    {
+        "question": "Who is Hayden Phan",
+        "query": "SELECT COUNT(*) FROM customers WHERE perfume_purchased = 'true'",
+        "result": "Are u stalker?!"
+    }
+]

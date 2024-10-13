@@ -1,0 +1,5 @@
+
+Example:
+    Question: {question}
+    SQL Query: {query}
+    SQL Result: {result}
