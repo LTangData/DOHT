@@ -3,6 +3,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from loguru import logger
 
+
 # Load environment variables from .env file if it exists
 load_dotenv()
 
@@ -18,7 +19,10 @@ DB_NAME = os.getenv('DB_NAME')
 PROJ_ROOT = Path(__file__).resolve().parents[1]
 logger.info(f'Project root path is: {PROJ_ROOT}')
 
+SRC_DIR = PROJ_ROOT / 'src'
 LOGS_DIR = PROJ_ROOT / 'logs'
+
+DAtA_DIR = SRC_DIR / 'data'
 
 # Ensure the logs directory exists
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
