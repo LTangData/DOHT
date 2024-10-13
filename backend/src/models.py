@@ -1,9 +1,10 @@
 from pydantic import BaseModel
 
+
 class QueryRequest(BaseModel):
     """
-    Request model for the query endpoint. This model validates the input request.
-    
+    Request model for the query endpoint.
+
     Attributes:
         question (str): The question being asked in the query.
     """
@@ -11,8 +12,8 @@ class QueryRequest(BaseModel):
 
 class QueryResponse(BaseModel):
     """
-    Response model for the query endpoint. This model represents the output response.
-    
+    Response model for the query endpoint.
+
     Attributes:
         answer (str): The answer generated in response to the query.
     """
