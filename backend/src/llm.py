@@ -1,7 +1,10 @@
 import os
 from langchain_openai import ChatOpenAI
-from loguru import logger
+
 from config import OPENAI_API_KEY
+
+from loguru import logger
+
 
 def setup_openai_api() -> ChatOpenAI:
     """
@@ -22,14 +25,14 @@ def setup_openai_api() -> ChatOpenAI:
     # Set the OpenAI API key in the environment
     os.environ['OPENAI_API_KEY'] = OPENAI_API_KEY
 
-    # Initialize the OpenAI LLM with the chosen model and temperature settings
+    # Initialize the OpenAI LLM with the GPT-4 model and temperature settings
     llm = ChatOpenAI(
         model='gpt-4o',
         temperature=0  # Control response randomness
     )
 
     try:
-        # Test the API connection by sending a simple request
+        # Test the API connection with a simple request
         response = llm.invoke("Say Hello")
         logger.success("OpenAI API call successful.")
     except Exception as e:
