@@ -14,15 +14,15 @@ from loguru import logger
 
 
 def lifespan(app: FastAPI) -> Generator[None, None, None]:
-    '''
-    Initializes resources like database and LLM during application startup.
+    """
+    Initializes resources like the database and LLM during application startup.
 
     Args:
         app (FastAPI): The FastAPI instance.
 
     Yields:
         None: Used to manage application lifespan (setup and teardown).
-    '''
+    """
     global MySQL_database, GPT4o_model, chain
     
     # Configure application logging
@@ -35,7 +35,7 @@ def lifespan(app: FastAPI) -> Generator[None, None, None]:
     GPT4o_model = setup_openai_api()
     
     # Create the processing chain to handle queries
-    chain = create_chain(MySQL_database, GPT4o_model)
+    chain = create_chain(GPT4o_model, MySQL_database)
 
     logger.success('Resources initialized successfully.')
     
@@ -62,7 +62,7 @@ app.add_middleware(
 
 @app.post('/query', response_model=QueryResponse)
 async def query_endpoint(request: QueryRequest) -> QueryResponse:
-    '''
+    """
     Endpoint to handle user queries and return processed answers.
 
     Args:
@@ -73,7 +73,7 @@ async def query_endpoint(request: QueryRequest) -> QueryResponse:
     
     Raises:
         HTTPException: If any error occurs during query processing.
-    '''
+    """
     try:
         # Invoke the chain with the provided question
         answer = chain.invoke({'question': request.question})
