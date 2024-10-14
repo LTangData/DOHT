@@ -1,0 +1,7 @@
+[
+    {
+        "question": "How many customers bought perfume?",
+        "query": "SELECT COUNT(olist_orders.customer_id) AS number_of_customers FROM olist_orders JOIN olist_order_items ON olist_orders.order_id = olist_order_items.order_id JOIN olist_products ON olist_order_items.product_id = olist_products.product_id WHERE olist_products.product_category_name = 'perfumaria';",
+        "result": "[(15,)]"
+    }
+]
