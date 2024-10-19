@@ -6,8 +6,6 @@
 [![Dev Containers](https://img.shields.io/badge/Dev_Containers-Open-blue?style=flat&logo=docker&logoColor=%232496ED&logoSize=auto)]()
 [![Conda](https://img.shields.io/badge/conda-supported-blue?style=flat&logo=anaconda&logoColor=%2344A833&logoSize=auto)](https://anaconda.org/anaconda/conda)
 
-## What is GROQ?
-
 GROQ (Get Rid Of Queries) is an innovative solution designed to streamline database interactions by eliminating the need for technical expertise, specifically in SQL. It instantly transforms natural language questions into SQL queries, providing immediate access to accurate data without relying on SQL proficiency. By democratizing data access, GROQ empowers users at all levels to make informed, data-driven decisions swiftly and confidently.
 
 
