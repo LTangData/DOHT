@@ -1,61 +1,55 @@
-# GROQ
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+## GROQ
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://choosealicense.com/licenses/mit/)
+[![Python](https://img.shields.io/badge/python-3.11.9-blue?style=flat&logo=python&logoColor=%233776AB&logoSize=auto&link=https%3A%2F%2Fwww.python.org%2Fdownloads%2Frelease%2Fpython-3119%2F)](https://www.python.org/downloads/release/python-3119/)
+[![LangChain](https://img.shields.io/badge/langchain-0.2.16-blue?style=flat&logo=langchain&logoColor=%231C3C3C&logoSize=auto)](https://api.python.langchain.com/en/latest/langchain_api_reference.html)
+[![Dev Containers](https://img.shields.io/badge/Dev_Containers-Open-blue?style=flat&logo=docker&logoColor=%232496ED&logoSize=auto)]()
+[![Conda](https://img.shields.io/badge/conda-supported-blue?style=flat&logo=anaconda&logoColor=%2344A833&logoSize=auto)](https://anaconda.org/anaconda/conda)
 
-GROQ (Get Rid of Query) is designed to streamline database interactions by eliminating the need for technical, specifically SQL, background. It instantly transforms natural language questions into SQL queries, providing immediate access to accurate data without relying on SQL expertise. This solution significantly reduces response time and enhances data accessibility, ensuring both efficiency and data integrity.
+## What is GROQ?
 
-## Project Organization
+GROQ (Get Rid Of Queries) is an innovative solution designed to streamline database interactions by eliminating the need for technical expertise, specifically in SQL. It instantly transforms natural language questions into SQL queries, providing immediate access to accurate data without relying on SQL proficiency. By democratizing data access, GROQ empowers users at all levels to make informed, data-driven decisions swiftly and confidently.
+
+
+## Quickstart
 
 ```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         groq and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── groq   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes groq a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
+git clone https://github.com/HuyTang10/CPSC_2221_Group_Project.git
 ```
 
---------
+```
+cd groq
+```
+
+```
+docker compose up
+```
+
+
+
+## Demo
+
+Insert gif or link to demo
+
+
+## Tech Stack
+
+**Client:** Streamlit
+
+**Server:** FastAPI
+
+**Database:** MySQL, Chroma
+
+**AI Solutions:** OpenAI API, LangChain
+
+**DevOps:** Docker, Github Actions
+
+
+
+
+## Acknowledgements
+
+ - [Cookiecutter Data Science template](https://cookiecutter-data-science.drivendata.org/)
+ - [README editor](https://readme.so/)
+ - [LangChain tutorial on Question/Answering system](https://python.langchain.com/docs/tutorials/sql_qa/)
 
