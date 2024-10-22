@@ -32,16 +32,17 @@ load_css(f'{STYLES_DIR}/UI.css')
 st.markdown('<h1 style="font-family:Montserrat; color:#3d4960; font-size:48px;">GROQ (Get Rid Of Queries)</h1>', unsafe_allow_html=True)
 
 # Text input for user to ask question
-user_question = st.text_input('Quesion goes here:')
+user_question = st.text_input('Question goes here:')
 
 # Placeholder for status message just under the text input
 status_message = st.empty()
 
 # Click 'Submit' or simply hit 'Enter' inside the textbox to submit the query
-if st.button('Submit') or user_question:
+if st.button('Submit') or (user_question and user_question != st.session_state.get('last_query')):
+    st.session_state['last_query'] = user_question # Store the current query to compare on next run
     if user_question:
         # Display 'LLM is extracting data...' while processing
-        status_message.markdown('<p style="font-family:Arial; font-size:16px; color:orange;">⏳ LLM is extracting data...</p>', unsafe_allow_html=True)
+        status_message.markdown('<p style="font-family:Arial; font-size:16px; color:orange;">⏳ LLM is processing data...</p>', unsafe_allow_html=True)
 
         # Send the user question to FastAPI backend
         response = requests.post(API_URL, json={'question': user_question})
@@ -51,9 +52,9 @@ if st.button('Submit') or user_question:
             result = response.json()['answer']
             st.write(result)
             # Update the status message to success
-            status_message.markdown('<p style="font-family:Arial; font-size:16px; color:green;">✅ Data extracted successfully.</p>', unsafe_allow_html=True)
+            status_message.markdown('<p style="font-family:Arial; font-size:16px; color:green;">✅ Data processed successfully.</p>', unsafe_allow_html=True)
         else:
             st.error(f'Error: {response.status_code} - {response.text}')
-            status_message.markdown('<p style="font-family:Arial; font-size:16px; color:red;">❌ Error occurred while retrieving data.</p>', unsafe_allow_html=True)
+            status_message.markdown('<p style="font-family:Arial; font-size:16px; color:red;">❌ Error occurred while processing data.</p>', unsafe_allow_html=True)
     else:
         st.warning('Please enter a question.')
