@@ -32,8 +32,10 @@ LOGS_DIR.mkdir(parents=True, exist_ok=True)
 try:
     from tqdm import tqdm
 
-    # Remove the default loguru handler
-    logger.remove(0)
+    # Check if the default handler exists before removing it
+    if 0 in logger._core.handlers:
+        # Remove the default loguru handler
+        logger.remove(0)
 
     # Add a new handler to use tqdm's write function for log messages, ensuring compatibility with progress bars
     logger.add(lambda msg: tqdm.write(msg, end=''), colorize=True)
