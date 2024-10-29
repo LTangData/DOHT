@@ -29,7 +29,9 @@ Some of the typical use cases include
 - Monitoring sales data
 - Enhancing customer service
 
-It's ideal for any organization looking to empower their team members with direct, easy access to data insights, promoting efficiency and informed decision-making across various departments.## Quickstart
+It's ideal for any organization looking to empower their team members with direct, easy access to data insights, promoting efficiency and informed decision-making across various departments.
+
+## Quickstart
 
 ```
 git clone https://github.com/HuyTang10/CPSC_2221_Group_Project.git
