@@ -30,30 +30,11 @@ Some of the typical use cases include
 - Enhancing customer service
 
 It's ideal for any organization looking to empower their team members with direct, easy access to data insights, promoting efficiency and informed decision-making across various departments.
-
 ## Quickstart
 
 ```
 git clone https://github.com/HuyTang10/CPSC_2221_Group_Project.git
 ```
-
-```
-cd groq
-```
-
-### With Docker (recommended)
-
-You must have Docker installed on your machine. [Install Docker](https://docs.docker.com/get-docker/)
-
-```
-docker compose up
-```
-
-Navigate to [`localhost:5801`](http://localhost:8501/) to view the application.
-
-### Without Docker
-
-#### Environment configuration
 
 When you clone the GROQ project, you'll need to manually create a `.env` file in the root directory of the project. This file should contain the necessary environment variables for proper configuration. Use the following format for your `.env` file:
 
@@ -67,6 +48,18 @@ DB_NAME="olist_customer_info"
 ```
 
 Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
+
+### With Docker (recommended)
+
+You must have Docker installed on your machine. [Install Docker](https://docs.docker.com/get-docker/)
+
+```
+docker compose up
+```
+
+Navigate to [`localhost:5801`](http://localhost:8501/) to view the application.
+
+### Without Docker
 
 #### Package installation
 
@@ -109,7 +102,7 @@ Insert gif or link to demo
 
 **AI Solutions:** OpenAI API, LangChain
 
-**DevOps:** Docker, Git
+**DevOps:** Docker, Github Actions
 
 ## Acknowledgements
 
