@@ -102,7 +102,7 @@ Insert gif or link to demo
 
 **AI Solutions:** OpenAI API, LangChain
 
-**DevOps:** Docker, Github Actions
+**DevOps:** Docker, Git
 
 ## Acknowledgements
 
