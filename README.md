@@ -1,5 +1,6 @@
 
 ## GROQ
+
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://choosealicense.com/licenses/mit/)
 [![Python](https://img.shields.io/badge/python-3.11.9-blue?style=flat&logo=python&logoColor=%233776AB&logoSize=auto&link=https%3A%2F%2Fwww.python.org%2Fdownloads%2Frelease%2Fpython-3119%2F)](https://www.python.org/downloads/release/python-3119/)
 [![LangChain](https://img.shields.io/badge/langchain-0.2.16-blue?style=flat&logo=langchain&logoColor=%231C3C3C&logoSize=auto)](https://api.python.langchain.com/en/latest/langchain_api_reference.html)
@@ -11,11 +12,13 @@
 GROQ (Get Rid Of Queries) is an intelligent RAG application designed to autonomously generate SQL queries from natural language questions, simplifying data retrieval by eliminating the need for technical query-writing skills and providing immediate, accurate access to database information.
 
 ## What real-world problems does it solve?
+
 GROQ addresses the challenge of accessing and managing database information without technical expertise in SQL, enhancing productivity and reducing reliance on specialized personnel. 
 
 This solution is crucial for businesses seeking to democratize data access and make informed decisions faster, streamlining operations and fostering a data-driven culture.
 
 ## Why would you bother?
+
 GROQ might be beneficial for you, who need quick access to database information without the complexities of SQL, if you are a
 - Business analyst
 - Manager
@@ -30,6 +33,7 @@ Some of the typical use cases include
 - Enhancing customer service
 
 It's ideal for any organization looking to empower their team members with direct, easy access to data insights, promoting efficiency and informed decision-making across various departments.
+
 ## Quickstart
 
 ```
