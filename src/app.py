@@ -29,7 +29,7 @@ def load_css(file_name: str) -> None:
 load_css(f'{STYLES_DIR}/UI.css')
 
 # Streamlit UI with custom title styling
-st.markdown('<h1 style="font-family:Montserrat; color:#3d4960; font-size:48px;">GROQ (Get Rid Of Queries)</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="font-family:Montserrat; color:#5e6f80; font-size:48px;">GROQ (Get Rid Of Queries)</h1>', unsafe_allow_html=True)
 
 # Text input for user to ask question
 user_question = st.text_input('Question goes here:')
