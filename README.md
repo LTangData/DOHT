@@ -91,11 +91,6 @@ invoke app
 
 Navigate to [`localhost:5801`](http://localhost:8501/) to view the application.
 
-## Demo
-
-Insert gif or link to demo
-
-
 ## Tech Stack
 
 **Client:** Streamlit
