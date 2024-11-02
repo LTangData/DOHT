@@ -48,7 +48,7 @@ DB_USER="groq"
 DB_PASSWORD="groq2024"
 DB_HOST="100.96.1.2"
 DB_PORT="3306"
-DB_NAME="olist_customer_info"
+DB_NAME="groq_data"
 ```
 
 Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
