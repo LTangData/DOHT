@@ -35,6 +35,7 @@ Some of the typical use cases include
 It's ideal for any organization looking to empower their team members with direct, easy access to data insights, promoting efficiency and informed decision-making across various departments.
 
 ## Quickstart
+**IMPORTANT**: Since I'm using VPN to secure the database connection, please email me if you want to clone the application so that I can start the VPN server to allow access. [Leo Tang](mailto:leotang.prof@gmail.com?subject=[GitHub]%20Request%20Database%20Access)
 
 ```
 git clone https://github.com/HuyTang10/CPSC_2221_Group_Project.git
