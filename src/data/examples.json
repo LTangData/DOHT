@@ -1,7 +1,32 @@
 [
     {
-        "question": "How many customers bought perfume?",
-        "query": "SELECT COUNT(olist_orders.customer_id) AS number_of_customers FROM olist_orders JOIN olist_order_items ON olist_orders.order_id = olist_order_items.order_id JOIN olist_products ON olist_order_items.product_id = olist_products.product_id WHERE olist_products.product_category_name = 'perfumaria';",
-        "result": "[(15,)]"
+        "question": "Tell me the information of all clients",
+        "query": "SELECT * FROM clients;",
+        "result": "[(401, 'George', 'Brown', 'Diabetes', 'Rent', 'Medical Checkup', 'Mary Brown', '745-238-9145'), (402, 'Helen', 'Smith', 'Hypertension', 'House', 'Shelter', 'Peter Smith', '892-564-3287'), (403, 'Isaac', 'Clark', 'None', 'House', 'Food Supply', 'Linda Clark', '673-457-1289'), (404, 'Jane', 'Wilson', 'Asthma', 'Rent', 'Counseling', 'James Wilson', '529-834-2761'), (405, 'Kevin', 'Davis', 'Allergies', 'Rent', 'Emergency Support', 'Sara Davis', '384-672-5398')]"
+    },
+    {
+        "question": "Tell me the project owners of Web projects",
+        "query": "SELECT ProjectOwner FROM projects WHERE Type = 'Web';",
+        "result": "[('Sophia Turner',), ('Sarah Collins',)]"
+    },
+    {
+        "question": "List out all employees who are managers",
+        "query": "SELECT DISTINCT e1.EmpID, e1.FirstName, e1.LastName, e1.Email, e1.PhoneNumber FROM employees e1 JOIN employees e2 ON e1.EmpID = e2.ManagerID;",
+        "result": "[(1010, 'Skyler', 'Carmichael', 'skyler.carmichael@gmail.com', '729-549-6391'), (1020, 'Cameron', 'Maddox', 'cameron.maddox@gmail.com', '553-800-4136'), (1030, 'Morgan', 'Windsor', 'morgan.windsor@gmail.com', '835-342-1008'), (1040, 'Alex', 'Maddox', 'alex.maddox@gmail.com', '948-201-1724'), (1050, 'Riley', 'Maddox', 'riley.maddox@gmail.com', '882-179-9313'), (1060, 'Reese', 'Windsor', 'reese.windsor@gmail.com', '418-384-8713'), (1070, 'Casey', 'Hawthorne', 'casey.hawthorne@gmail.com', '141-749-6349'), (1080, 'Cameron', 'Ellis', 'cameron.ellis@gmail.com', '766-531-8060'), (1090, 'Jordan', 'Blackwood', 'jordan.blackwood@gmail.com', '195-104-2091'), (1100, 'Alex', 'Pendleton', 'alex.pendleton@gmail.com', '430-651-5157')]"
+    },
+    {
+        "question": "Tell me all the volunteers who participated in all projects",
+        "query": "SELECT v.VolunteerID, v.FirstName, v.LastName FROM volunteers v JOIN collaboration c ON v.VolunteerID = c.VolunteerID GROUP BY v.VolunteerID, v.FirstName, v.LastName HAVING COUNT(DISTINCT c.ProjectID) = (SELECT COUNT(DISTINCT ProjectID) FROM projects);",
+        "result": "[(202, 'Ben', 'Wright'), (205, 'Eva', 'Green')]"
+    },
+    {
+        "question": "Tell me the average number of people who are involved in a project",
+        "query": "SELECT AVG(people_count) AS average_people_involved FROM (SELECT ProjectID, (SELECT COUNT(*) FROM participation WHERE participation.ProjectID = projects.ProjectID) + (SELECT COUNT(*) FROM collaboration WHERE collaboration.ProjectID = projects.ProjectID) AS people_count FROM projects) AS project_people_counts;",
+        "result": "[(Decimal('13'),)]"
+    },
+    {
+        "question": "How many projects are there for each category of priority?",
+        "query": "SELECT Priority, COUNT(DISTINCT p.ProjectID) AS TotalProjects FROM tasks t JOIN projects p ON t.ProjectID = p.ProjectID GROUP BY Priority",
+        "result": "[('High', 10), ('Low', 10), ('Medium', 10)]"
     }
 ]
