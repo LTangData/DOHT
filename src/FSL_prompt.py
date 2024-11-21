@@ -39,7 +39,7 @@ class CustomExampleSelector(SemanticSimilarityExampleSelector):
         similarity_threshold (float): The minimum similarity score to consider an example relevant.
     '''
     
-    similarity_threshold: float = 0.9
+    similarity_threshold: float = 0.8
 
     def select_examples(self, input_variables: Dict[str, str]) -> List[Dict[str, str]]:
         '''
