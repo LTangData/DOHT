@@ -68,17 +68,6 @@ def create_chain(llm: ChatOpenAI, db: SQLDatabase) -> RunnablePassthrough:
     # Prompt template for answering user questions based on SQL query and result
     prompt = get_final_prompt()
 
-    # print(prompt.invoke({
-    #     'question': 'How many customers bought perfume',
-    #     'query': '''SELECT COUNT(DISTINCT o.customer_id) AS number_of_customers
-    #             FROM olist_orders o
-    #             JOIN olist_order_items oi ON o.order_id = oi.order_id
-    #             JOIN olist_products p ON oi.product_id = p.product_id
-    #             JOIN product_category_name_translation pct ON p.product_category_name = pct.product_category_name
-    #             WHERE pct.product_category_name_english = 'perfume';''',
-    #     'result': '3'
-    # }).to_string())
-
     def get_query_result(data):
         try:
             result = execute_query.invoke({'query': extract_sql_from_query(itemgetter('query')(data))})
