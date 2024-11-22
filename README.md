@@ -44,15 +44,29 @@ git clone https://github.com/HuyTang10/CPSC_2221_Group_Project.git
 When you clone the GROQ project, you'll need to manually create a `.env` file in the root directory of the project. This file should contain the necessary environment variables for proper configuration. Use the following format for your `.env` file:
 
 ```
-OPENAI_API_KEY=<Your_OpenAI_API_key>
+OPENAI_API_KEY="<Your_OpenAI_API_key>"
 DB_USER="groq"
 DB_PASSWORD="groq2024"
-DB_HOST="100.96.1.2"
+DB_HOST="<Your_IPv4_address>"
 DB_PORT="3306"
 DB_NAME="groq_data"
 ```
 
 Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
+
+In order to find your IPv4 address, open a new terminal
+
+Windows:
+- Type `ipconfig`
+- Find the line that reads "IPv4 Address" under your network connection (it might be labeled as "Wireless Network Connection" or "Ethernet Adapter")
+
+macOS
+- Type `ifconfig`
+- Look for "inet" followed by a series of numbers (e.g., inet 192.168.1.1) next to your active network connection, typically labeled as "en0" or "en1"
+
+Linux
+- Type `ip a` or `ip addr`
+- Look for "inet" followed by your IP address under the network interface you are using (like eth0 or wlan0)
 
 ### With Docker (recommended)
 
