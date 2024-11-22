@@ -1,5 +1,4 @@
-
-## GROQ
+![GROQ](https://github.com/user-attachments/assets/85f90fd6-cd4a-47f6-b06e-2c3fd6db0dd8)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://choosealicense.com/licenses/mit/)
 [![Python](https://img.shields.io/badge/python-3.11.9-blue?style=flat&logo=python&logoColor=%233776AB&logoSize=auto&link=https%3A%2F%2Fwww.python.org%2Fdownloads%2Frelease%2Fpython-3119%2F)](https://www.python.org/downloads/release/python-3119/)
