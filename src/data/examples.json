@@ -1,5 +1,29 @@
 [
     {
+        "input": "Tell me the information of all clients",
+        "query": "SELECT * FROM clients;"
+    },
+    {
+        "input": "Tell me the project owners of Web projects",
+        "query": "SELECT ProjectOwner FROM projects WHERE Type = 'Web';"
+    },
+    {
+        "input": "List out all employees who are managers",
+        "query": "SELECT DISTINCT e1.EmpID, e1.FirstName, e1.LastName, e1.Email, e1.PhoneNumber FROM employees e1 JOIN employees e2 ON e1.EmpID = e2.ManagerID;"
+    },
+    {
+        "input": "Tell me all the volunteers who participated in all projects",
+        "query": "SELECT v.VolunteerID, v.FirstName, v.LastName FROM volunteers v JOIN collaboration c ON v.VolunteerID = c.VolunteerID GROUP BY v.VolunteerID, v.FirstName, v.LastName HAVING COUNT(DISTINCT c.ProjectID) = (SELECT COUNT(DISTINCT ProjectID) FROM projects);"
+    },
+    {
+        "input": "Tell me the average number of people who are involved in a project",
+        "query": "SELECT AVG(people_count) AS average_people_involved FROM (SELECT ProjectID, (SELECT COUNT(*) FROM participation WHERE participation.ProjectID = projects.ProjectID) + (SELECT COUNT(*) FROM collaboration WHERE collaboration.ProjectID = projects.ProjectID) AS people_count FROM projects) AS project_people_counts;"
+    },
+    {
+        "input": "How many projects are there for each category of priority?",
+        "query": "SELECT Priority, COUNT(DISTINCT p.ProjectID) AS TotalProjects FROM tasks t JOIN projects p ON t.ProjectID = p.ProjectID GROUP BY Priority"
+    },
+    {
         "input": "How many customers bought perfume?",
         "query": "SELECT COUNT(olist_orders.customer_id) AS number_of_customers FROM olist_orders JOIN olist_order_items ON olist_orders.order_id = olist_order_items.order_id JOIN olist_products ON olist_order_items.product_id = olist_products.product_id WHERE olist_products.product_category_name = 'perfumaria';"
     },
