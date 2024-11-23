@@ -58,6 +58,8 @@ Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to ena
 
 **IMPORTANT**: Due to financial limitations, the GROQ project's database is managed locally rather than on a cloud platform. Therefore, you need to replicate our data into your MySQL Workbench in order to be able to access to the data through the application.
 
+[GROQ_data.sql](https://www.dropbox.com/scl/fi/n8bdx1rg1oi95j37qw66q/GROQ_data.sql?rlkey=st4yab2fzwfxkakcldz4mjkwi&st=jvmpsz12&dl=0)
+
 ### Run with Docker (recommended)
 
 You must have Docker installed on your machine. [Install Docker](https://docs.docker.com/get-docker/)
