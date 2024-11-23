@@ -1,68 +1,56 @@
+from typing import AsyncGenerator
+from contextlib import asynccontextmanager
+
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-
-from models import QueryRequest, QueryResponse
-from database import setup_initial_database
-from llm import setup_openai_api
-from chain import create_chain
-from log_config import configure_logging
-
-from typing import Generator
-
 from loguru import logger
 
+from agent import create_agent
+from database import setup_initial_database
+from llm import setup_openai_api
+from log_config import configure_logging
+from models import QueryRequest, QueryResponse
 
-def lifespan(app: FastAPI) -> Generator[None, None, None]:
-    '''
+
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
+    """
     Initializes resources like the database and LLM during application startup.
 
     Args:
         app (FastAPI): The FastAPI instance.
 
     Yields:
-        None: Used to manage application lifespan (setup and teardown).
-    '''
-    global MySQL_database, GPT4o_model, chain
-    
-    # Configure application logging
+        None: Used to manage application lifespan (startup and shutdown).
+    """
     configure_logging(__file__)
-    
-    # Setup the initial database connection
+    global MySQL_database, GPT4o_model, agent_executor
     MySQL_database = setup_initial_database()
-    
-    # Setup OpenAI GPT-4o model through the OpenAI API
     GPT4o_model = setup_openai_api()
-    
-    # Create the processing chain to handle queries
-    chain = create_chain(GPT4o_model, MySQL_database)
+    agent_executor = create_agent(GPT4o_model, MySQL_database)
 
-    logger.success('Resources initialized successfully.')
-    
-    yield  # This pauses here while the app runs and resumes when the app is shutting down
+    logger.success("Resources initialized successfully.")
 
-    # Cleanup code and finalize logs after application stops
-    logger.info('Shutting down the application...')
-    logger.info('Logs finalized.')
+    yield
 
-# Initialize FastAPI app with a lifespan handler
+    logger.info("Shutting down the application...")
+    logger.info("Logs finalized.")
+
 app = FastAPI(lifespan=lifespan)
 
-# List of allowed origins (frontend URL will be included inside this)
-origins = ['http://localhost:8501']
-
-# Middleware to enable Cross-Origin Resource Sharing (CORS)
+origins = ["http://localhost:8501"]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],  # Allow all origins for simplicity
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=['*'],  # Allow all HTTP methods
-    allow_headers=['*'],  # Allow all HTTP headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-@app.post('/query', response_model=QueryResponse)
+@app.post("/query", response_model=QueryResponse)
 async def query_endpoint(request: QueryRequest) -> QueryResponse:
-    '''
+    """
     Endpoint to handle user queries and return processed answers.
 
     Args:
@@ -73,15 +61,13 @@ async def query_endpoint(request: QueryRequest) -> QueryResponse:
     
     Raises:
         HTTPException: If any error occurs during query processing.
-    '''
+    """
     try:
-        # Invoke the chain with the provided question
-        answer = chain.invoke({'question': request.question})
-        return QueryResponse(answer=answer)
+        answer = agent_executor.invoke({"input": request.question})
+        return QueryResponse(answer=answer["output"])
     except Exception as e:
-        # Handle any exceptions that occur and return a 500 HTTP error
-        raise HTTPException(status_code=500, detail=f'{e}')
+        logger.error(f"Failed to process query: {str(e)}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
-if __name__ == '__main__':
-    # Start the FastAPI app with Uvicorn
-    uvicorn.run('server:app', host='0.0.0.0', port=8000, reload=True)
+if __name__ == "__main__":
+    uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True)
