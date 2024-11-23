@@ -36,7 +36,8 @@ Some of the typical use cases include
 It's ideal for any organization looking to empower their team members with direct, easy access to data insights, promoting efficiency and informed decision-making across various departments.
 
 ## Quickstart
-**IMPORTANT**: Since I'm using VPN to secure the database connection, please email me if you want to clone the application so that I can start the VPN server to allow access. [Leo Tang](mailto:leotang.prof@gmail.com?subject=[GitHub]%20Request%20Database%20Access)
+
+### Reproduce the project
 
 ```
 git clone https://github.com/HuyTang10/CPSC_2221_Group_Project.git
@@ -48,28 +49,16 @@ When you clone the GROQ project, you'll need to manually create a `.env` file in
 OPENAI_API_KEY="<Your_OpenAI_API_key>"
 DB_USER="groq"
 DB_PASSWORD="groq2024"
-DB_HOST="<Your_IPv4_address>"
+DB_HOST="localhost"
 DB_PORT="3306"
 DB_NAME="groq_data"
 ```
 
 Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
 
-In order to find your IPv4 address, open a new terminal
+**IMPORTANT**: Due to financial limitations, the GROQ project's database is managed locally rather than on a cloud platform. Therefore, you need to replicate our data into your MySQL Workbench in order to be able to access to the data through the application.
 
-Windows:
-- Type `ipconfig`
-- Find the line that reads "IPv4 Address" under your network connection (it might be labeled as "Wireless Network Connection" or "Ethernet Adapter")
-
-macOS
-- Type `ifconfig`
-- Look for "inet" followed by a series of numbers (e.g., inet 192.168.1.1) next to your active network connection, typically labeled as "en0" or "en1"
-
-Linux
-- Type `ip a` or `ip addr`
-- Look for "inet" followed by your IP address under the network interface you are using (like eth0 or wlan0)
-
-### With Docker (recommended)
+### Run with Docker (recommended)
 
 You must have Docker installed on your machine. [Install Docker](https://docs.docker.com/get-docker/)
 
@@ -79,7 +68,7 @@ docker compose up
 
 Navigate to [`localhost:5801`](http://localhost:8501/) to view the application.
 
-### Without Docker
+### Run without Docker
 
 #### Package installation
 
@@ -99,7 +88,7 @@ conda env create -f environment.yml
 conda activate GROQ_ENV
 ```
 
-#### Starting the application
+#### Start the application
 
 ```
 invoke app
