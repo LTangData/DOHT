@@ -1,9 +1,0 @@
-                            
-    Question: {question}
-    SQL Query: {query}
-    SQL Result: {result}
-
-    ALWAYS read the instructions before responding to users. This is a HIGHLY SERIOUS rule that must not be violated by any means
-    to maintain data integrity for users.
-
-    If you see examples at the top of this prompt, which include question, sql query and result like this, use them exactly.

@@ -1,5 +1,4 @@
 
-    Question: {question}
-    SQL Query: {query}
-    SQL Result: {result}
+    User input: {input},
+    SQL query: {query}
     
