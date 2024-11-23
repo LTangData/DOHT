@@ -2,7 +2,7 @@
   <img alt="GROQ Logo" src="src/assets/GROQ Logo.png">
 </p>
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://github.com/LTangData/GROQ/blob/main/LICENSE)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://github.com/LTangData/GROQ/blob/main/LICENSE.md)
 [![Python](https://img.shields.io/badge/python-3.11.9-blue?style=flat&logo=python&logoColor=%233776AB&logoSize=auto)](https://www.python.org/downloads/release/python-3119/)
 [![MySQL](https://img.shields.io/badge/mysql-8.0.35-blue?style=flat&logo=mysql&logoColor=%234479A1&logoSize=auto)](https://www.mysql.com/)
 [![LangChain](https://img.shields.io/badge/langchain-0.2.16-blue?style=flat&logo=langchain&logoColor=%231C3C3C&logoSize=auto)](https://www.langchain.com/)
