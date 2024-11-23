@@ -1,5 +1,6 @@
-
-## GROQ
+<p align="center">
+  <img alt="GROQ Logo" src="https://github.com/user-attachments/assets/832815e6-29fb-4e0b-8696-3f6a28784b1e">
+</p>
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://choosealicense.com/licenses/mit/)
 [![Python](https://img.shields.io/badge/python-3.11.9-blue?style=flat&logo=python&logoColor=%233776AB&logoSize=auto&link=https%3A%2F%2Fwww.python.org%2Fdownloads%2Frelease%2Fpython-3119%2F)](https://www.python.org/downloads/release/python-3119/)
@@ -36,6 +37,8 @@ It's ideal for any organization looking to empower their team members with direc
 
 ## Quickstart
 
+### Reproduce the project
+
 ```
 git clone https://github.com/HuyTang10/CPSC_2221_Group_Project.git
 ```
@@ -43,17 +46,21 @@ git clone https://github.com/HuyTang10/CPSC_2221_Group_Project.git
 When you clone the GROQ project, you'll need to manually create a `.env` file in the root directory of the project. This file should contain the necessary environment variables for proper configuration. Use the following format for your `.env` file:
 
 ```
-OPENAI_API_KEY=<Your_OpenAI_API_key>
+OPENAI_API_KEY="<Your_OpenAI_API_key>"
 DB_USER="groq"
 DB_PASSWORD="groq2024"
-DB_HOST="100.96.1.2"
+DB_HOST="localhost"
 DB_PORT="3306"
 DB_NAME="groq_data"
 ```
 
 Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
 
-### With Docker (recommended)
+**IMPORTANT**: Due to financial limitations, the GROQ project's database is managed locally rather than on a cloud platform. Therefore, you need to replicate our data into your MySQL Workbench in order to be able to access to the data through the application.
+
+[GROQ_data.sql](https://www.dropbox.com/scl/fi/n8bdx1rg1oi95j37qw66q/GROQ_data.sql?rlkey=st4yab2fzwfxkakcldz4mjkwi&st=jvmpsz12&dl=0)
+
+### Run with Docker (recommended)
 
 You must have Docker installed on your machine. [Install Docker](https://docs.docker.com/get-docker/)
 
@@ -63,7 +70,7 @@ docker compose up
 
 Navigate to [`localhost:5801`](http://localhost:8501/) to view the application.
 
-### Without Docker
+### Run without Docker
 
 #### Package installation
 
@@ -83,7 +90,7 @@ conda env create -f environment.yml
 conda activate GROQ_ENV
 ```
 
-#### Starting the application
+#### Start the application
 
 ```
 invoke app
