@@ -15,13 +15,11 @@ GROQ (Get Rid Of Queries) is an intelligent RAG application designed to autonomo
 
 ## How does it work?
 
-<div align="right">
-  <a href="https://python.langchain.com/v0.1/docs/use_cases/sql/quickstart/">Source</a>
+<div style="display: flex; align-items: center; justify-content: center; position: relative;">
+  <a href="https://python.langchain.com/v0.1/docs/use_cases/sql/quickstart/" style="position: absolute; right: 0; text-decoration: none;">Source</a>
+  <img alt="GROQ architecture" src="src/assets/Architecture.png" style="margin: 5px auto;">
 </div>
 
-<div align="center">
-  <img alt="GROQ architecture" src="src/assets/Architecture.png">
-</div>
 
 1. **Search for relevant information**: The app (or SQL Agent) searches for data related to the user's question.
 2. **Generate SQL query**: AI model (like GPT) uses the data to generate a SQL query.
