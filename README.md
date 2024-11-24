@@ -15,7 +15,9 @@ GROQ (Get Rid Of Queries) is an intelligent RAG application designed to autonomo
 
 ## How does it work?
 
-<a href="https://python.langchain.com/v0.1/docs/use_cases/sql/quickstart/" style="text-align: right;">Source</a>
+<div style="text-align: right;">
+  <a href="https://python.langchain.com/v0.1/docs/use_cases/sql/quickstart/">Source</a>
+</div>
 
 <img alt="GROQ architecture" src="src/assets/Architecture.png" style="margin-top: 10px;">
 
