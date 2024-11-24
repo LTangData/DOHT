@@ -20,7 +20,7 @@ GROQ (Get Rid Of Queries) is an intelligent RAG application designed to autonomo
 </div>
 
 <div align="center">
-  <img alt="GROQ architecture" src="src/assets/Architecture.png" style="margin-top: 5px;">
+  <img alt="GROQ architecture" src="src/assets/Architecture.png">
 </div>
 
 1. **Search for relevant information**: The app (or SQL Agent) searches for data related to the user's question.
