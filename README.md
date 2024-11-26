@@ -11,7 +11,7 @@
 
 ## What is GROQ?
 
-GROQ (Get Rid Of Queries) is an intelligent RAG application designed to autonomously generate SQL queries from natural language questions, simplifying data retrieval by eliminating the need for technical query-writing skills and providing immediate, accurate access to database information.
+GROQ (Get Rid of Queries) is an intelligent RAG application designed to autonomously generate SQL queries from natural language questions, simplifying data retrieval by eliminating the need for technical query-writing skills and providing immediate, accurate access to database information.
 
 ## How does it work?
 
