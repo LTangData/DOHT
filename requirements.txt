@@ -1,11 +1,12 @@
+cryptography==43.0.1
 fastapi==0.115.2
-uvicorn==0.31.1
-python-dotenv==1.0.1
-pymysql==1.0.2
+invoke==1.6.0
 langchain==0.2.16
 langchain_openai==0.1.25
 langchain_chroma==0.1.4
 langchain_community==0.2.16
 loguru==0.7.2
+python-dotenv==1.0.1
+pymysql==1.0.2
 streamlit==1.38.0
-invoke==1.6.0
+uvicorn==0.31.1
