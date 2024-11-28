@@ -61,16 +61,16 @@ When you clone the GROQ project, you'll need to manually create a `.env` file in
 
 ```
 OPENAI_API_KEY="<Your_OpenAI_API_key>"
-DB_USER="root" # Any user that you have locally (we take root for demonstration here)
+DB_USER="root" # Any user that you have locally (we take "root" for demonstration here)
 DB_PASSWORD="root" # Password for the user you specified
-DB_HOST="localhost" # Host that is allowed to connect to the database through your user
+DB_HOST="localhost" # Host that is allowed to connect to the database through your user. If you use Docker, either use your IPv4 address or a secure host since Docker does not allow connection made from "localhost"
 DB_PORT="3306"
 DB_NAME="groq_data"
 ```
 
 Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
 
-**IMPORTANT**: Due to financial limitations, the GROQ project's database is managed locally rather than on a cloud platform. Therefore, you need to replicate our data into your MySQL Workbench in order to be able to access to the data through the application.
+**IMPORTANT**: Due to financial limitations, the GROQ project's database is managed locally rather than on a cloud platform. Therefore, you need to replicate my data into your MySQL Workbench in order to be able to access to the data through the application.
 
 [GROQ_data.sql](https://www.dropbox.com/scl/fi/n8bdx1rg1oi95j37qw66q/GROQ_data.sql?rlkey=st4yab2fzwfxkakcldz4mjkwi&st=jvmpsz12&dl=0)
 
