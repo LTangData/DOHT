@@ -61,9 +61,9 @@ When you clone the GROQ project, you'll need to manually create a `.env` file in
 
 ```
 OPENAI_API_KEY="<Your_OpenAI_API_key>"
-DB_USER="groq"
-DB_PASSWORD="groq2024"
-DB_HOST="localhost"
+DB_USER="root" # Any user that you have locally (we take root for demonstration here)
+DB_PASSWORD="root" # Password for the user you specified
+DB_HOST="localhost" # Host that is allowed to connect to the database through your user
 DB_PORT="3306"
 DB_NAME="groq_data"
 ```
