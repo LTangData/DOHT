@@ -70,9 +70,9 @@ DB_NAME="groq_data"
 
 Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
 
-**DB_USER**: Any user that you have locally (we take "root" for demonstration here)
-**DB_PASSWORD**: Password for the user you specified
-**DB_HOST**: Host that is allowed to connect to the database through your user. If you use Docker, either use your IPv4 address or a secure host since Docker does not allow connection made from "localhost"
+- **DB_USER**: Any user that you have locally (we take "root" for demonstration here)
+- **DB_PASSWORD**: Password for the user you specified
+- **DB_HOST**: Host that is allowed to connect to the database through your user. If you use Docker, either use your IPv4 address or a secure host since Docker does not allow connection made from "localhost"
 
 **IMPORTANT**: Due to financial limitations, the GROQ project's database is managed locally rather than on a cloud platform. Therefore, you need to replicate my data into your MySQL Workbench in order to be able to access to the data through the application.
 
