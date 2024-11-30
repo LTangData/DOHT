@@ -92,7 +92,6 @@ dependencies:
   - importlib-resources=6.4.5
   - importlib_resources=6.4.5
   - intel-openmp=2024.2.1
-  - invoke=1.6.0
   - ipykernel=6.29.5
   - ipython=8.27.0
   - ipython_genutils=0.2.0
