@@ -15,12 +15,17 @@ from data_loader import load_message_from_file, load_json_from_file
 
 def create_fs_prompt() -> FewShotPromptTemplate:
     """
-    Initializes a few-shot prompt template using semantic similarity for example selection.
+    Configures a few-shot prompt template with semantic similarity-based example selection.
 
-    Loads examples from JSON and constructs a template with dynamic elements based on the provided data.
-    
+    This few-shot prompt is designed for the RAG application to dynamically select the most relevant examples according to user questions
+    for generating accurate and context-aware responses. In simplicity, this technique is used to "teach" or fine-tune the model to be able to
+    handle highly complex questions and fully understand the nature of our database.
+     
+    Semantic similarity search is a search algorithm used to match user question with examples based on meaning rather than exact words. In order to
+    utilize this algorithm, vector database is also used in this application (ChromaDB in our case).
+
     Returns:
-        Configured few-shot prompt template.
+        FewShotPromptTemplate: A dynamic prompt template using selected examples.
     """
     examples = load_json_from_file(f"{DATA_DIR}/examples.json")
     example_selector = SemanticSimilarityExampleSelector.from_examples(
@@ -46,13 +51,13 @@ def create_fs_prompt() -> FewShotPromptTemplate:
 
 def create_final_prompt(few_shot_prompt: FewShotPromptTemplate) -> ChatPromptTemplate:
     """
-    Combines a few-shot prompt with a message placeholder to form a chat prompt template.
+    Converts a few-shot prompt template into a chat-ready format.
 
     Args:
-        few_shot_prompt: Few-shot prompt to wrap into a chat template.
+        few_shot_prompt (FewShotPromptTemplate): The base prompt to enhance.
 
     Returns:
-        Complete chat prompt template.
+        ChatPromptTemplate: A complete template for chat-based interactions.
     """
     full_prompt = ChatPromptTemplate.from_messages(
         [
@@ -67,12 +72,10 @@ def create_final_prompt(few_shot_prompt: FewShotPromptTemplate) -> ChatPromptTem
 
 def get_final_prompt() -> ChatPromptTemplate:
     """
-    Generates a chat prompt template using a few-shot configured prompt.
-
-    Orchestrates the creation of few-shot and chat prompts to be used for model interactions.
+    Assembles the final chat prompt template by integrating a few-shot prompt.
 
     Returns:
-        Finalized chat prompt template.
+        ChatPromptTemplate: A complete template for chat-based interactions.
     """
     few_shot_prompt = create_fs_prompt()
 
