@@ -7,6 +7,10 @@ class LLMError(Exception):
     """Base exception for LLM errors."""
     pass
 
+class AgentError(Exception):
+    """Base exception for agent errors."""
+    pass
+
 
 # Custom classes
 class DatabaseURIError(DatabaseConnectionError):
