@@ -2,42 +2,46 @@ import os
 
 from langchain_openai import ChatOpenAI
 from loguru import logger
+from openai import OpenAIError
 
 from config import OPENAI_API_KEY
+from custom_exceptions import (
+    InvalidAPIKey,
+    APIKeyNotFound
+)
 
 
 def setup_openai_api() -> ChatOpenAI:
     """
-    Sets up the OpenAI API using the provided secret key from environment variables.
+    Configures and initializes LLM using OpenAI GPT-4o chat model.
 
     Returns:
-        ChatOpenAI: An instance of the ChatOpenAI client configured to use GPT-4.
+        ChatOpenAI: The configured LLM.
 
     Raises:
-        ValueError: If the OpenAI API key is not found.
-        Exception: If an unexpected error occurs during the API test call.
+        APIKeyNotFound: If the OpenAI API key is missing or not provided.
+        InvalidAPIKey: If the API connection fails due to an invalid API key, network issues, or other API-related errors.
     """
-    # Check if the OpenAI API key is available
     if not OPENAI_API_KEY:
-        logger.error("OpenAI API Key not found in environment variables")
-        raise ValueError("OpenAI API credentials are missing.")
-
-    # Set the OpenAI API key in the environment
+        logger.error(f"OpenAI API connection failed. API Key was not provided.")
+        raise APIKeyNotFound(
+            "Failed to connect to OpenAI API. Please ensure that you have provided your API Key before running the setup."
+        ) from None
     os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
-    # Initialize the OpenAI LLM with the GPT-4 model and temperature settings
-    llm = ChatOpenAI(
-        model="gpt-4o",
-        temperature=0  # Control response randomness
-    )
-
     try:
+        # Initiliaze LLM
+        llm = ChatOpenAI(
+            model="gpt-4o",
+            temperature=0  # Control response randomness
+        )
         # Test the API connection with a simple request
         response = llm.invoke("Say Hello")
-        logger.success("OpenAI API call successful.")
-    except Exception as e:
-        # Log and raise an exception if the API call fails
-        logger.error(f"API call failed. An unexpected error occurred: {e}")
-        raise
-
+        logger.success("OpenAI API successfully initialized.")
+    except OpenAIError as api_error:
+        logger.error(f"OpenAI API connection failed. Details: \n{api_error}")
+        raise InvalidAPIKey(
+            "Failed to connect to OpenAI API. Check the validity of your API key and network settings."
+        ) from api_error
+    
     return llm
