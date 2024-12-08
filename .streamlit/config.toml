@@ -1,0 +1,13 @@
+[client]
+showSidebarNavigation = false
+
+[server]
+headless = true
+runOnSave = true
+
+[theme]
+base = "dark"
+primaryColor = ""
+backgroundColor = ""
+textColor = ""
+font = "monospace"

@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from loguru import logger
+from config import LOGS_DIR
 
 
 def configure_logging(file: str) -> None:
@@ -14,7 +15,7 @@ def configure_logging(file: str) -> None:
     after the script with a standard log format and log level.
     """
     # Define the logs directory path
-    logs_dir = Path("../logs")
+    logs_dir = Path(LOGS_DIR)
     
     # Create the logs directory if it does not exist
     logs_dir.mkdir(parents=True, exist_ok=True)
