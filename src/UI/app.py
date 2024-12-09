@@ -1,7 +1,7 @@
 import streamlit as st
 
-from pages.database_login import login
-from pages.query_executor import executor
+from .pages.database_login import login
+from .pages.query_executor import executor
 from config import STYLES_DIR
 
 st.set_page_config(
