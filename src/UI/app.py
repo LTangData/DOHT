@@ -1,8 +1,8 @@
 import streamlit as st
 
-from .pages.database_login import login
-from .pages.query_executor import executor
-from config import STYLES_DIR
+from UI.pages.database_login import login
+from UI.pages.query_executor import executor
+from config.ui_config import STYLES_DIR
 
 st.set_page_config(
     page_title="Get Rid of Query"
@@ -29,13 +29,13 @@ def load_css(file_name: str) -> None:
 
 load_css(f"{STYLES_DIR}/UI.css")
 
-if "login_completed" not in st.session_state:
-    st.session_state["login_completed"] = False
-
 if "db_info" not in st.session_state:
     st.session_state["db_info"] = {}
 
-if not st.session_state["login_completed"]:
+if "page" not in st.query_params:
+    st.query_params.page = "login"
+
+if st.query_params.page == "login":
     login()
 else:
     executor()

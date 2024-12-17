@@ -3,7 +3,8 @@ import requests
 import streamlit as st
 
 
-API_URL = "http://localhost:8000/query"
+QUERY_ENDPOINT = "http://localhost:8000/query"
+DISCONNECTION_ENDPOINT = "http://localhost:8000/close-connection"
 def executor():
     st.markdown("<h1 style=\"font-family:Montserrat; color:#5e6f80; font-size:48px;\">GROQ (Get Rid of Queries)</h1>", unsafe_allow_html=True)
 
@@ -14,7 +15,7 @@ def executor():
         st.session_state["last_query"] = user_question
         if user_question:
             status_message.markdown("<p style=\"font-family:Arial; font-size:16px; color:orange;\">⏳ LLM is processing data...</p>", unsafe_allow_html=True)
-            response = requests.post(API_URL, json={"input": user_question})
+            response = requests.post(QUERY_ENDPOINT, json={"input": user_question})
             if response.status_code == 200:
                 result = response.json()["output"]
                 st.write(result)
@@ -26,6 +27,11 @@ def executor():
             st.warning("Please enter a question.")
 
     if st.button("Disconnect and Return"):
-        st.session_state["login_completed"] = False
-        st.session_state["db_info"] = {}
-        st.rerun()
+        response = requests.post(DISCONNECTION_ENDPOINT)
+        if response.status_code == 200:
+            st.query_params.page = "login"
+            st.session_state["db_info"] = {}
+            st.rerun()
+            st.stop()
+        else:
+            st.error(response.json()["details"])

@@ -11,7 +11,7 @@ def login():
     user = form.text_input("User")
     password = form.text_input("Password", type="password")
     host = form.text_input("Host")
-    port = form.number_input("Port", format="%.0f")
+    port = form.number_input("Port", value=3306)
     db_name = form.text_input("Database")
     submit = form.form_submit_button("Connect")
 
@@ -27,8 +27,9 @@ def login():
             
             response = requests.post(API_URL, json=st.session_state["db_info"])
             if response.status_code == 200:
-                st.session_state["login_completed"] = True
+                st.query_params.page = "executor"
                 st.rerun()
+                st.stop()
             else:
                 st.error(response.json()["detail"])
         else:
