@@ -3,20 +3,21 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 
-from agent import create_agent
-from custom_exceptions import (
+from API.agent import create_agent
+from API.custom_exceptions import (
     DatabaseURIError,
     AuthenticationError,
     HostPermissionError,
     UnknownDatabaseError,
+    NonexistentConnectionError,
     InvalidAPIKey,
     APIKeyNotFound,
     AgentError
 )
-from database import setup_initial_database
-from llm import setup_openai_api
-from log_config import configure_logging
-from models import (
+from API.database import setup_initial_database
+from API.llm import setup_openai_api
+from API.log_config import configure_logging
+from API.models import (
     DatabaseConnectionRequest,
     QueryRequest,
     QueryResponse,
@@ -33,6 +34,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+connection_exists = False
+
 @app.post("/setup")
 async def initial_resources_setup(credentials: DatabaseConnectionRequest) -> str:
     """
@@ -47,7 +50,6 @@ async def initial_resources_setup(credentials: DatabaseConnectionRequest) -> str
     Raises:
         HTTPException: If setup fails due to database, LLM or agent issues.
     """
-    global agent_executor
     input = dict(credentials)
     db_user = input["user"]
     db_password = input["password"]
@@ -57,30 +59,60 @@ async def initial_resources_setup(credentials: DatabaseConnectionRequest) -> str
 
     configure_logging(__file__)
 
+    global connection_exists, MySQL_database, GPT4o_model, agent_executor
+
     try:
         MySQL_database = setup_initial_database(db_user, db_password, db_host, db_port, db_name)
+        connection_exists = True
+        GPT4o_model = setup_openai_api()
+        agent_executor = create_agent(GPT4o_model, MySQL_database)
+        logger.success("Successfully connected to GROQ.")
+        return "Success"
     except (DatabaseURIError, AuthenticationError, HostPermissionError, UnknownDatabaseError) as db_error:
         raise HTTPException(
             status_code=(500 if type(db_error) == DatabaseURIError else 400),
             detail=str(db_error)
         )
-
-    try:
-        GPT4o_model = setup_openai_api()
     except (InvalidAPIKey, APIKeyNotFound) as api_error:
         raise HTTPException(
             status_code=400,
             detail=str(api_error)
         )
-
-    try:
-        agent_executor = create_agent(GPT4o_model, MySQL_database)
-        logger.success("Successfully connected to GROQ.")
-        return "Success"
     except AgentError as agent_error:
         raise HTTPException(
             status_code=500,
             detail=str(agent_error)
+        )
+    
+@app.post("/close-connection")
+async def close_database_connection() -> str:
+    """
+    Closes the active database connection and resets global resources.
+
+    Terminates the MySQL database connection and clears related global variables. 
+    Logs an error and raises an HTTP exception if no connection exists.
+
+    Returns:
+        str: Success message when the connection is closed.
+
+    Raises:
+        HTTPException: If no active connection exists or an error occurs.
+    """
+    global connection_exists, MySQL_database, GPT4o_model, agent_executor
+
+    try:
+        if not connection_exists:
+            raise NonexistentConnectionError
+        MySQL_database = None
+        connection_exists = False
+        agent_executor = None
+        logger.success("Database connection closed.")
+        return "Success"
+    except NonexistentConnectionError as nxt_conn_error:
+        logger.error(f"Error while closing the database connection: {nxt_conn_error}")
+        raise HTTPException(
+            status_code=500,
+            detail="An unexpected error occurred while closing the database connection. Please ensure you have a connection available to be closed."
         )
 
 @app.post("/query", response_model=QueryResponse)
@@ -100,7 +132,7 @@ async def query_endpoint(request: QueryRequest) -> QueryResponse:
     try:
         answer = agent_executor.invoke({"input": request.input})
         return QueryResponse(output=answer["output"])
-    except NameError as setup_error:
+    except Exception as setup_error:
         logger.error(f"Failed to process query. Details:\n {setup_error}")
         raise HTTPException(
             status_code=500,
