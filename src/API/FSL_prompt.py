@@ -9,8 +9,8 @@ from langchain_core.prompts import (
 )
 from langchain_openai import OpenAIEmbeddings
 
-from config import DATA_DIR
-from data_loader import load_message_from_file, load_json_from_file
+from config.server_config import DATA_DIR
+from API.data_loader import load_message_from_file, load_json_from_file
 
 
 def create_fs_prompt() -> FewShotPromptTemplate:

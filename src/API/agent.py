@@ -4,8 +4,8 @@ from langchain_community.utilities import SQLDatabase
 from langchain_openai import ChatOpenAI
 from loguru import logger
 
-from custom_exceptions import AgentError
-from FSL_prompt import get_final_prompt
+from API.custom_exceptions import AgentError
+from API.FSL_prompt import get_final_prompt
 
 
 def create_agent(llm: ChatOpenAI, db: SQLDatabase) -> AgentExecutor:

@@ -1,7 +1,8 @@
 from pathlib import Path
 
 from loguru import logger
-from config import LOGS_DIR
+
+from config.server_config import LOGS_DIR
 
 
 def configure_logging(file: str) -> None:

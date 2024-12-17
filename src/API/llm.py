@@ -4,8 +4,8 @@ from langchain_openai import ChatOpenAI
 from loguru import logger
 from openai import OpenAIError
 
-from config import OPENAI_API_KEY
-from custom_exceptions import (
+from config.server_config import OPENAI_API_KEY
+from API.custom_exceptions import (
     InvalidAPIKey,
     APIKeyNotFound
 )

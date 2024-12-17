@@ -2,7 +2,7 @@ from langchain_community.utilities import SQLDatabase
 from loguru import logger
 from sqlalchemy.exc import OperationalError
 
-from custom_exceptions import (
+from API.custom_exceptions import (
     DatabaseURIError,
     AuthenticationError,
     HostPermissionError,
