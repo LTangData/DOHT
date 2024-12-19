@@ -37,7 +37,7 @@ app.add_middleware(
 connection_exists = False
 
 @app.post("/setup")
-async def initial_resources_setup(credentials: DatabaseConnectionRequest) -> str:
+async def initialize_resources(credentials: DatabaseConnectionRequest) -> str:
     """
     Sets up the database and LLM resources.
 
@@ -59,6 +59,7 @@ async def initial_resources_setup(credentials: DatabaseConnectionRequest) -> str
 
     configure_logging(__file__)
 
+    # Used for closing connection
     global connection_exists, MySQL_database, GPT4o_model, agent_executor
 
     try:
@@ -83,9 +84,33 @@ async def initial_resources_setup(credentials: DatabaseConnectionRequest) -> str
             status_code=500,
             detail=str(agent_error)
         )
+
+@app.post("/query", response_model=QueryResponse)
+async def process_user_query(request: QueryRequest) -> QueryResponse:
+    """
+    Processes user queries and returns answers.
+
+    Args:
+        request (QueryRequest): User query input.
+
+    Returns:
+        QueryResponse: Generated answer.
+
+    Raises:
+        HTTPException: If query processing fails or setup is incomplete.
+    """
+    try:
+        answer = agent_executor.invoke({"input": request.input})
+        return QueryResponse(output=answer["output"])
+    except Exception as setup_error:
+        logger.error(f"Failed to process query. Details:\n {setup_error}")
+        raise HTTPException(
+            status_code=500,
+            detail="Database connection and LLM were not set up properly. Please ensure to run initial setup first."
+        )
     
 @app.post("/close-connection")
-async def close_database_connection() -> str:
+async def terminate_database_connection() -> str:
     """
     Closes the active database connection and resets global resources.
 
@@ -113,30 +138,6 @@ async def close_database_connection() -> str:
         raise HTTPException(
             status_code=500,
             detail="An unexpected error occurred while closing the database connection. Please ensure you have a connection available to be closed."
-        )
-
-@app.post("/query", response_model=QueryResponse)
-async def query_endpoint(request: QueryRequest) -> QueryResponse:
-    """
-    Processes user queries and returns answers.
-
-    Args:
-        request (QueryRequest): User query input.
-
-    Returns:
-        QueryResponse: Generated answer.
-
-    Raises:
-        HTTPException: If query processing fails or setup is incomplete.
-    """
-    try:
-        answer = agent_executor.invoke({"input": request.input})
-        return QueryResponse(output=answer["output"])
-    except Exception as setup_error:
-        logger.error(f"Failed to process query. Details:\n {setup_error}")
-        raise HTTPException(
-            status_code=500,
-            detail="Database connection and LLM were not set up properly. Please ensure to run initial setup first."
         )
 
 if __name__ == "__main__":
