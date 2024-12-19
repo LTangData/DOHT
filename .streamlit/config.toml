@@ -9,5 +9,5 @@ runOnSave = true
 base = "dark"
 primaryColor = ""
 backgroundColor = ""
-textColor = ""
-font = "monospace"
+textColor = "#b6cde0"
+font = "sans serif"

@@ -1,32 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-/* Customize input box */
-input {
-    font-family: 'Montserrat', sans-serif;
+* {
     font-size: 16px;
-    border: 2px solid #3d4960;
-    padding: 10px;
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    outline: none;
-    box-shadow: none; /* Remove shadow which might cause red outline */
 }
 
-/* Customize submit button */
-div.stButton > button {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    background-color: #3d4960;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
+.query-title {
+    font-size: 48px;
 }
 
-/* Button hover effect */
-div.stButton > button:hover {
-    background-color: #283747;
-    color: #ffffff;
+.process-msg {
+    color: orange;
+}
+
+.success-msg {
+    color: green;
+}
+
+.error-msg {
+    color: red;
 }
