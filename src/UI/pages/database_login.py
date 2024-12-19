@@ -27,7 +27,7 @@ def login():
             
             response = requests.post(API_URL, json=st.session_state["db_info"])
             if response.status_code == 200:
-                st.query_params.page = "executor"
+                st.query_params.update({"page": "query"})
                 st.rerun()
                 st.stop()
             else:
