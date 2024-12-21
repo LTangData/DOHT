@@ -1,0 +1,40 @@
+/* STATUS MESSAGE */
+.process-msg {
+    color: orange;
+}
+
+.success-msg {
+    color: var(--success-color);
+}
+
+.error-msg {
+    color: var(--error-color);
+}
+
+/* BUTTONS */
+.element-container:nth-child(4) button {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    outline: none !important;
+    transition: 0.3s ease !important;
+}
+
+.element-container:nth-child(4) button:hover, .element-container:nth-child(4) button:focus:hover {
+    background-color: var(--secondary-color) !important;
+}
+
+.element-container:nth-child(4) button:focus {
+    background-color: var(--focus-bg-color) !important;
+    border: 2px solid var(--primary-color) !important;
+}
+
+.element-container:nth-child(5) button {
+    border: 1px solid var(--error-color) !important;
+    color: var(--error-color) !important;
+    transition: 0.3s ease !important;
+}
+
+.element-container:nth-child(5) button:hover, .element-container:nth-child(5) button:focus {
+    background-color: var(--error-color) !important;
+    color: white !important;
+}

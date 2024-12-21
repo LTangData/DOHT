@@ -1,0 +1,31 @@
+:root {
+    --primary-color: #7289da;
+    --secondary-color: #7289dac1;
+    --success-color: #008000;
+    --warning-color: #ffa500;
+    --error-color: #b41b1b;
+    --input-bg-color: #232331;
+    --input-text-color: #ffa500;
+    --focus-bg-color: #090a0f;
+    --font-size-base: 1rem; /* 16px */
+}
+
+* {
+    font-size: var(--font-size-base) !important;
+}
+
+h1 {
+    font-size: 48px !important;
+}
+
+/* INPUTS */
+input {
+    background-color: var(--input-bg-color) !important;
+    caret-color: var(--input-text-color) !important;
+    color: var(--input-text-color) !important;
+}   
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--input-text-color) !important;
+    box-shadow: 0 0 0px 1000px var(--input-bg-color) inset;
+}

@@ -7,7 +7,7 @@ runOnSave = true
 
 [theme]
 base = "dark"
-primaryColor = ""
-backgroundColor = ""
-textColor = "#b6cde0"
+primaryColor = "transparent"
+backgroundColor = "#090a0f"
+textColor = "#7289da"
 font = "sans serif"

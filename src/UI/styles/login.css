@@ -1,0 +1,52 @@
+/* FORM INPUTS */
+.stForm .element-container:not(:last-child) > div > div:nth-child(2) {
+    background-color: var(--input-bg-color);
+}
+
+.stForm .element-container:not(:last-child) > div > div:nth-child(2) button {
+    background-color: var(--input-bg-color);
+}
+
+/* Placeholder for pressing Enter to submit form */
+.stForm .element-container:not(:last-child) > div > div:last-child span {
+    font-size: 0.8rem !important;
+}
+
+/* SHOW/HIDE PASSWORD BUTTON */
+.stTextInput button:focus {
+    border: 2px solid var(--primary-color) !important;
+    border-radius: 100%;
+    outline: none !important;
+}
+
+/* INCREASE/DECREASE NUMBER BUTTONS FOR PORT */
+.stNumberInput button:hover, .stNumberInput button:focus:hover {
+    background-color: var(--primary-color) !important;
+}
+
+.stNumberInput button:focus {
+    background-color: var(--focus-bg-color) !important;
+    border: 2px solid var(--primary-color) !important;
+}
+
+/* SUBMIT BUTTON */
+.stFormSubmitButton {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.stFormSubmitButton button {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    outline: none !important;
+    transition: 0.3s ease !important;
+}
+
+.stFormSubmitButton button:hover, .stFormSubmitButton button:focus:hover {
+    background-color: var(--secondary-color) !important;
+}
+
+.stFormSubmitButton button:focus {
+    background-color: var(--focus-bg-color) !important;
+    border: 2px solid var(--primary-color) !important;
+}
