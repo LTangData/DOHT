@@ -14,7 +14,7 @@
 /* BUTTONS */
 .element-container:nth-child(4) button {
     background-color: var(--primary-color) !important;
-    color: white !important;
+    color: var(--contrast-color) !important;
     outline: none !important;
     transition: 0.3s ease !important;
 }
@@ -36,5 +36,11 @@
 
 .element-container:nth-child(5) button:hover, .element-container:nth-child(5) button:focus {
     background-color: var(--error-color) !important;
-    color: white !important;
+    color: var(--contrast-color) !important;
+}
+
+/* RESPONSES */
+
+.element-container:nth-child(6) p {
+    color: var(--contrast-color) !important;
 }
