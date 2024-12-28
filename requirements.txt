@@ -1,12 +1,23 @@
-fastapi == 0.115.2
-langchain_openai == 0.1.25
-langchain_chroma == 0.1.4
-langchain_community == 0.2.16
-lexicon == 2.0.1
-invoke == 1.6.0
-loguru == 0.7.2
-python-dotenv == 1.0.1
-pymysql == 1.0.2
-streamlit == 1.38.0
-uvicorn == 0.31.1
+# Core dependencies
+fastapi == 0.115.6
+langchain == 0.3.13
+langchain-chroma == 0.1.4
+langchain-community == 0.3.13
+langchain-openai == 0.2.14
+pymysql == 1.1.1
+uvicorn == 0.34.0
+
+# Build and Packaging Tools
+setuptools == 75.6.0
+setuptools-scm == 8.1.0
+
+# Development tools
+invoke == 2.2.0
+loguru == 0.7.3
+python-dotenv == 1.0.1 
+
+# Web framework and UI
+streamlit == 1.41.1
+
+# Local package
 -e .
