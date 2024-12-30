@@ -1,23 +1,6 @@
 services:
-  # backend:
-  #   container_name: fastapi
-  #   build:
-  #     context: .
-  #     dockerfile: ./src/API/Dockerfile
-  #   ports:
-  #     - "8000:8000"
-
-  # frontend:
-  #   container_name: streamlit
-  #   build:
-  #     context: .
-  #     dockerfile: ./src/UI/Dockerfile
-  #   ports:
-  #     - "8501:8501"
-  #   depends_on:
-  #     - backend
   app:
-    container_name: app
+    container_name: server
     build:
       context: .
       dockerfile: ./Dockerfile
