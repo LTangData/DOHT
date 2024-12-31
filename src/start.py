@@ -1,3 +1,4 @@
+import os
 import sys
 import subprocess
 import signal
@@ -21,7 +22,8 @@ def start_backend():
 
 def start_frontend():
     """Start the frontend"""
-    subprocess.run(["streamlit", "run", STREAMLIT])
+    # Default to 8000 if PORT is not set. This is needed for Heroku deployment
+    subprocess.run(["streamlit", "run", STREAMLIT, f"--server.port={int(os.getenv("PORT", 8501))}"])
 
 def main():
     """Start the full application"""
