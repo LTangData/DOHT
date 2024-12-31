@@ -1,1 +1,1 @@
-web: start-frontend
+web: start-client
