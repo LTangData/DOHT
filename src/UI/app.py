@@ -1,3 +1,4 @@
+import os
 from typing import List
 
 import streamlit as st
@@ -6,6 +7,9 @@ from UI.pages.database_login import login
 from UI.pages.query_executor import query
 from config.ui_config import STYLES_DIR
 
+
+# This is needed for Heroku deployment
+os.environ.setdefault("PORT", "8501")  # Default to 8000 if PORT is not set
 
 st.set_page_config(
     page_title="Get Rid of Query"
