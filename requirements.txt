@@ -1,7 +1,6 @@
 # Core dependencies
 cryptography == 44.0.0
 fastapi == 0.115.6
-honcho == 2.0.0
 langchain == 0.3.13
 langchain-chroma == 0.1.4
 langchain-community == 0.3.13
@@ -14,7 +13,6 @@ setuptools == 75.6.0
 setuptools-scm == 8.1.0
 
 # Development tools
-invoke == 2.2.0
 loguru == 0.7.3
 python-dotenv == 1.0.1 
 
