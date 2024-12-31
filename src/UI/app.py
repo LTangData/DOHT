@@ -13,15 +13,7 @@ st.set_page_config(
 
 def load_css(*files: List[str]) -> None:
     """
-    Loads CSS from a specified file into a Streamlit application.
-
-    This function reads the contents of a CSS file and injects it into the Streamlit app as a style tag. This allows for custom styling of the Streamlit app directly from an external CSS file.
-
-    Args:
-        file_name (str): The path to the CSS file to be loaded.
-
-    Raises:
-        FileNotFoundError: If the CSS file does not exist at the specified path.
+    Loads custom CSS to the application.
     """
     try:
         css_content = ""
