@@ -15,6 +15,14 @@ def shutdown():
         process.terminate()
     sys.exit(0)
 
+def start_backend():
+    """Start the backend"""
+    subprocess.run([sys.executable, FASTAPI])
+
+def start_frontend():
+    """Start the frontend"""
+    subprocess.run(["streamlit", "run", STREAMLIT])
+
 def main():
     """Start the full application"""
     try:
