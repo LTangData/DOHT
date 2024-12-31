@@ -1,1 +1,1 @@
-web: start-groq
+web: start-frontend
