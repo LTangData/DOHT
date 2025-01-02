@@ -6,7 +6,7 @@ import streamlit as st
 QUERY_ENDPOINT = "http://localhost:8000/query"
 DISCONNECTION_ENDPOINT = "http://localhost:8000/close-connection"
 def query():
-    st.title("GROQ (Get Rid of Query)")
+    st.title("dohT")
 
     user_question = st.text_input("Question goes here:")
     status_message = st.empty()
