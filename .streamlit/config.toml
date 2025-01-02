@@ -4,7 +4,6 @@ showSidebarNavigation = false
 [server]
 headless = true
 runOnSave = true
-address = "0.0.0.0"
 
 [theme]
 base = "dark"
