@@ -1,9 +1,14 @@
 import os
 from pathlib import Path
 
+import streamlit as st
+
 
 # Environment variables
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+if "API_URL" in st.secrets:  # Check if running in Streamlit Cloud
+    API_URL = st.secrets["API_URL"]
+else:  # Fallback for local development
+    API_URL = "http://localhost:8000"
 
 # Root directory
 PROJ_ROOT = Path(__file__).resolve().parents[2]
