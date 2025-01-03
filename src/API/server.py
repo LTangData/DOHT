@@ -25,7 +25,10 @@ from API.models import (
 
 app = FastAPI()
 
-origins = ["http://localhost:8501"]
+origins = [
+    "http://localhost:8501",
+    "https://ltang-doht.streamlit.app/"   
+]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
