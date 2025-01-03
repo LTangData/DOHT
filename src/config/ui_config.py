@@ -1,12 +1,9 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
-
 
 # Environment variables
-load_dotenv()
-API_URL = os.getenv("API_URL")
+API_URL = os.getenv("API_URL", "http://localhost:8000")
 
 # Root directory
 PROJ_ROOT = Path(__file__).resolve().parents[2]
