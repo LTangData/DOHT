@@ -2,9 +2,11 @@ import requests
 
 import streamlit as st
 
+from config.ui_config import API_URL
 
-QUERY_ENDPOINT = "http://localhost:8000/query"
-DISCONNECTION_ENDPOINT = "http://localhost:8000/close-connection"
+
+QUERY_ENDPOINT = f"{API_URL}/query"
+DISCONNECTION_ENDPOINT = f"{API_URL}/close-connection"
 def query():
     st.title("dohT")
 

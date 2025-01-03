@@ -2,8 +2,10 @@ import requests
 
 import streamlit as st
 
+from config.ui_config import API_URL
 
-API_URL = "http://localhost:8000/setup"
+
+SETUP_ENDPOINT = f"{API_URL}/setup"
 def login():
     st.title("Database Connection")
 
@@ -25,7 +27,7 @@ def login():
                 "database": db_name
             }
             
-            response = requests.post(API_URL, json=st.session_state["db_info"])
+            response = requests.post(SETUP_ENDPOINT, json=st.session_state["db_info"])
             if response.status_code == 200:
                 st.query_params.update({"page": "query"})
                 st.rerun()
