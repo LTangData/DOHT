@@ -4,6 +4,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 
+# Environment variables
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
