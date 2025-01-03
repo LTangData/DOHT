@@ -26,8 +26,8 @@ from API.models import (
 app = FastAPI()
 
 origins = [
-    "http://localhost:8501",
-    "https://ltang-doht.streamlit.app/"   
+    "http://localhost:8501", # Development
+    "https://ltang-doht.streamlit.app/" # Production
 ]
 app.add_middleware(
     CORSMiddleware,
