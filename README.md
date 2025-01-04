@@ -36,7 +36,7 @@ This application has been deployed for public access, allowing you to quickly te
 👉 [Try the App Here](https://ltang-doht.streamlit.app/)
 
 
-<span style={color: red; font-weight: bold;}>
+<span style="color: red; font-weight: bold;">
     HIGHLY IMPORTANT
 </span>
 
