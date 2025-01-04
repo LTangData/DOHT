@@ -36,9 +36,7 @@ This application has been deployed for public access, allowing you to quickly te
 👉 [Try the App Here](https://ltang-doht.streamlit.app/)
 
 
-<span style="color: red; font-weight: bold;">
-    HIGHLY IMPORTANT
-</span>
+<span style="color: red; font-weight: bold;">HIGHLY IMPORTANT</span>
 
 To ensure the application works seamlessly with your own databases:
 
@@ -56,7 +54,7 @@ To run this project on your local machine, follow these steps:
 
 1. **Clone the Repository**
 
-    ```
+    ```.bash
     git clone https://github.com/LTangData/dohT.git
     ```
 2. **Set Up Environement Variables**
