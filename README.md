@@ -1,92 +1,89 @@
+
 ## DOHT
 
+[//]: # (Core dependencies)
+[![Python](https://img.shields.io/badge/python-3.12.8-ffde57?style=flat&logo=python&logoColor=4584b6&logoSize=auto)](https://www.python.org/downloads/release/python-3128/)
+[![LLM](https://img.shields.io/badge/LLM-GPT--4o-412991?style=flat)](https://platform.openai.com/docs/models)
+
+[//]: # (DBMS available)
+[![MySQL](https://img.shields.io/badge/MySQL-available-darkgreen?style=flat&logo=mysql&logoColor=F29111&logoSize=auto)](https://www.mysql.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-developing-blue?style=flat&logo=postgresql&logoColor=008bb9&logoSize=auto)](https://www.postgresql.org/)
+[![Microsoft SQL Server](https://img.shields.io/badge/SQL%20Server-developing-blue?style=flat)](https://www.microsoft.com/en-ca/sql-server/sql-server-downloads)
+[![SQLite](https://img.shields.io/badge/SQLite-developing-blue?style=flat&logo=sqlite&logoColor=5db1e4&logoSize=auto)](https://www.sqlite.org/)
+[![Oracle Database](https://img.shields.io/badge/Oracle%20Database-unavailable-red?style=flat)]()
+[![MongoDB](https://img.shields.io/badge/MongoDB-developing-blue?style=flat&logo=mongodb&logoColor=3FA037&logoSize=auto)](https://www.mongodb.com/)
+
+[//]: # (Deployment)
+[![Docker](https://img.shields.io/badge/Docker-deployed-darkgreen?style=flat&logo=docker&logoColor=0db7ed&logoSize=auto)](https://www.docker.com/)
+[![Render](https://img.shields.io/badge/Render-deployed-darkgreen?style=flat&logo=render&logoColor=white&logoSize=auto)](https://render.com/)
+[![Streamlit Community Cloud](https://img.shields.io/badge/Streamlit%20Community%20Cloud-deployed-darkgreen?style=flat&logo=streamlit&logoColor=FF4B4B&logoSize=auto)](https://streamlit.io/cloud)
+
+[//]: # (Licenses)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://github.com/LTangData/GROQ/blob/main/LICENSE.md)
-[![Python](https://img.shields.io/badge/python-3.11.9-blue?style=flat&logo=python&logoColor=%233776AB&logoSize=auto)](https://www.python.org/downloads/release/python-3119/)
-[![MySQL](https://img.shields.io/badge/mysql-8.0.35-blue?style=flat&logo=mysql&logoColor=%234479A1&logoSize=auto)](https://www.mysql.com/)
-[![LangChain](https://img.shields.io/badge/langchain-0.2.16-blue?style=flat&logo=langchain&logoColor=%231C3C3C&logoSize=auto)](https://www.langchain.com/)
-[![Docker](https://img.shields.io/badge/Docker-available-blue?style=flat&logo=docker&logoColor=%232496ED&logoSize=auto)](https://www.docker.com/)
-[![Conda](https://img.shields.io/badge/conda-supported-blue?style=flat&logo=anaconda&logoColor=%2344A833&logoSize=auto)](https://anaconda.org/anaconda/conda)
 
-## What is GROQ?
+**dohT** is an advanced [Retrieval-Augmented Generation (RAG)](https://www.databricks.com/glossary/retrieval-augmented-generation-rag) application designed to simplify database interaction by eliminating the need for SQL queries. With dohT, users can retrieve precise and relevant information from databases simply by asking natural-language questions. The app leverages the power of [Large Language Model (LLM)](https://aws.amazon.com/what-is/large-language-model/) to interpret user questions, translate them into SQL queries, execute the queries, and return accurate, concise answers in a natural response.
 
-GROQ (Get Rid of Queries) is an intelligent RAG application designed to autonomously generate SQL queries from natural language questions, simplifying data retrieval by eliminating the need for technical query-writing skills and providing immediate, accurate access to database information.
+Tailored specifically for business use, **dohT** is highly beneficial for non-technical users:
 
-## How does it work?
-
-<img alt="GROQ architecture" src="assets/Architecture.png" style="">
-
-<div align="right">
-  <a href="https://python.langchain.com/v0.1/docs/use_cases/sql/quickstart/" style="text-align: right;">Source</a>
-</div>
-
-1. **Search for relevant information**: The app (or SQL Agent) searches for data related to the user's question.
-2. **Generate SQL query**: AI model (like GPT) uses the data to generate a SQL query.
-3. **Execute SQL query**: The app (or SQL Agent) executes the SQL query.
-3. **Respond to user question**: AI model responds to user using result from the query.
-
-## What real-world problems does it solve?
-
-GROQ addresses the challenge of accessing and managing database information without technical expertise in SQL, enhancing productivity and reducing reliance on specialized personnel. 
-
-This solution is crucial for businesses seeking to democratize data access and make informed decisions faster, streamlining operations and fostering a data-driven culture.
-
-## Why would you bother?
-
-GROQ might be beneficial for you, who need quick access to database information without the complexities of SQL, if you are a
-- Business analyst
-- Manager
-- Non-technical staff
-- Developer
-- IT support specialist
-
-Some of the typical use cases include
-- Generating reports
-- Analyzing inventory levels
-- Monitoring sales data
-- Enhancing customer service
-
-It's ideal for any organization looking to empower their team members with direct, easy access to data insights, promoting efficiency and informed decision-making across various departments.
+- **Ease of Use**: Eliminating the need to learn SQL, users can interact with database using everyday language.
+- **Enhanced efficiency and Time saving**: Accurate information is provided promptly. More effective decision-making is facilitated while conserving technical resources.
+- **Accurate and Contextualized results**: Integrated with powerful LLM, a RAG app delivers precise and context-aware responses. Actionable insights are extracted instead of raw or incomplete data.
 
 ## Quickstart
 
-### Reproduce the project
+This application has been deployed for public access, allowing you to quickly test its functionality.
 
-```
-git clone https://github.com/HuyTang10/CPSC_2221_Group_Project.git
-```
+👉 [Try the App Here](https://ltang-doht.streamlit.app/)
 
-When you clone the GROQ project, you'll need to manually create a `.env` file in the root directory of the project. This file should contain the necessary environment variables for proper configuration. Use the following format for your `.env` file:
 
-```
-OPENAI_API_KEY="<Your_OpenAI_API_key>"
-DB_USER="root"
-DB_PASSWORD="root"
-DB_HOST="localhost"
-DB_PORT="3306"
-DB_NAME="groq_data"
-```
+<span style={color: red; font-weight: bold;}>
+    HIGHLY IMPORTANT
+</span>
 
-Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
+To ensure the application works seamlessly with your own databases:
 
-- **DB_USER**: Any user that you have locally (we take "root" for demonstration here)
-- **DB_PASSWORD**: Password for the user you specified
-- **DB_HOST**: Host that is allowed to connect to the database through your user. If you use Docker, either use your IPv4 address or a secure host since Docker does not allow connection made from "localhost"
+- Databases must be hosted on a cloud platform (e.g., AWS RDS, Google Cloud SQL, Azure SQL) or a dedicated server with a public IP address or domain name.
+- Local databases (hosted on your personal machine) are not accessible by this application.
 
-**IMPORTANT**: Due to financial limitations, the GROQ project's database is managed locally rather than on a cloud platform. Therefore, you need to replicate my data into your MySQL Workbench in order to be able to access to the data through the application.
+> ⚠️ **Important**  
+> The binds system has changed. Instead of doing the name of the key, there are scancodes assigned per key.
 
-[GROQ_data.sql](https://www.dropbox.com/scl/fi/3jqexrc6x8gl7tjzfrjrd/GROQ_data.sql?rlkey=ile4z0wlpe5e59hc4vi6xpt97&st=vmr6kweo&dl=0)
+## Run Locally
 
-### Run with Docker (recommended)
+With this approach, users will be able to establish connection to their local databases.
 
-You must have Docker installed on your machine. [Install Docker](https://docs.docker.com/get-docker/)
+To run this project on your local machine, follow these steps:
+
+1. **Clone the Repository**
+
+    ```
+    git clone https://github.com/LTangData/dohT.git
+    ```
+2. **Set Up Environement Variables**
+
+    When you clone the project, you'll need to manually create a `.env` file in the root directory of the project. As mentioned earlier, since this project utilizes GPT-4o model to perform core functionalities, you need to have your **OpenAI API key** available. Use the following format for your `.env` file:
+
+    ```.env
+    OPENAI_API_KEY="<Your_OpenAI_API_key>"
+    ```
+
+    Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
+
+### With Docker (recommended)
+
+You must have Docker installed on your machine.
+
+⬇️ [Install Docker](https://docs.docker.com/get-docker/)
+
+After installation, in the root directory of the project, run the following command:
 
 ```
 docker compose up
 ```
 
-Navigate to [`localhost:5801`](http://localhost:8501/) to view the application.
+Navigate to [localhost:5801](http://localhost:8501/) to view the application.
 
-### Run without Docker
+### Without Docker
 
 #### Package installation
 
@@ -106,13 +103,74 @@ conda env create -f environment.yml
 conda activate GROQ_ENV
 ```
 
-#### Start the application
+#### Starting the application
 
 ```
 invoke app
 ```
 
 Navigate to [`localhost:5801`](http://localhost:8501/) to view the application.
+## Quickstart
+
+```
+git clone https://github.com/HuyTang10/CPSC_2221_Group_Project.git
+```
+
+When you clone the GROQ project, you'll need to manually create a `.env` file in the root directory of the project. This file should contain the necessary environment variables for proper configuration. Use the following format for your `.env` file:
+
+```
+OPENAI_API_KEY=<Your_OpenAI_API_key>
+DB_USER="groq"
+DB_PASSWORD="groq2024"
+DB_HOST="100.96.1.2"
+DB_PORT="3306"
+DB_NAME="olist_customer_info"
+```
+
+Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
+
+### With Docker (recommended)
+
+You must have Docker installed on your machine. [Install Docker](https://docs.docker.com/get-docker/)
+
+```
+docker compose up
+```
+
+Navigate to [`localhost:5801`](http://localhost:8501/) to view the application.
+
+### Without Docker
+
+#### Package installation
+
+Using `pip`:
+
+```
+pip install -r requirements.txt
+```
+
+Using `conda`:
+
+```
+conda env create -f environment.yml
+```
+
+```
+conda activate GROQ_ENV
+```
+
+#### Starting the application
+
+```
+invoke app
+```
+
+Navigate to [`localhost:5801`](http://localhost:8501/) to view the application.
+
+## Demo
+
+Insert gif or link to demo
+
 
 ## Tech Stack
 
