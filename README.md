@@ -1,6 +1,4 @@
-<div align="center">
-  <img alt="GROQ Logo" src="assets/DOHT Logo.png">
-</div>
+## DOHT
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://github.com/LTangData/GROQ/blob/main/LICENSE.md)
 [![Python](https://img.shields.io/badge/python-3.11.9-blue?style=flat&logo=python&logoColor=%233776AB&logoSize=auto)](https://www.python.org/downloads/release/python-3119/)
