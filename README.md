@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="GROQ Logo" src="src/assets/GROQ Logo.png">
+  <img alt="GROQ Logo" src="assets/DOHT Logo.png">
 </div>
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://github.com/LTangData/GROQ/blob/main/LICENSE.md)
@@ -15,7 +15,7 @@ GROQ (Get Rid of Queries) is an intelligent RAG application designed to autonomo
 
 ## How does it work?
 
-<img alt="GROQ architecture" src="src/assets/Architecture.png" style="">
+<img alt="GROQ architecture" src="assets/Architecture.png" style="">
 
 <div align="right">
   <a href="https://python.langchain.com/v0.1/docs/use_cases/sql/quickstart/" style="text-align: right;">Source</a>
