@@ -36,11 +36,14 @@ This application has been deployed for public access, allowing you to quickly te
 👉 [Try the App Here](https://ltang-doht.streamlit.app/)
 
 > ⚠️ **HIGHLY IMPORTANT**
-
 > To ensure the application works seamlessly with your databases:
-
 > - Databases must be hosted on a cloud platform (e.g., AWS RDS, Google Cloud SQL, Azure SQL) or a dedicated server with a public IP address or domain name.
 > - Local databases (hosted on your personal machine) are not accessible by this application.
+
+<div style="border-left: 4px solid #8A2BE2; padding: 10px; background-color: #f9f6ff; color: #371f75;">
+  <strong>Important</strong><br>
+  The binds system has changed. Instead of doing the name of the key, there are scancodes assigned per key.
+</div>
 
 ## Run Locally
 
