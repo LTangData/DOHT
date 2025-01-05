@@ -52,7 +52,6 @@ To run this project on your local machine, follow these steps:
 
     ```cmd
     git clone https://github.com/LTangData/dohT.git
-    ```
 
 2. **Set Up Environement Variables**
 
