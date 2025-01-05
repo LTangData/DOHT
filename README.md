@@ -44,7 +44,7 @@ To ensure the application works seamlessly with your databases:
 
 # Run Locally
 
-With this approach, users will be able to establish connection to their local databases.
+With this approach, users will be able to establish connection to their local databases using `localhost` as host.
 
 To run this project on your local machine, follow these steps:
 
@@ -76,13 +76,16 @@ After installation, in the root directory of the project, run the following comm
 docker compose up
 ```
 
+> **Important**
+> Docker containers operate on an isolated network, separate from the host machine's network. To connect to a local database from a container, use `host.docker.internal` instead of `localhost` to correctly route the connection to the host machine. 
+
 Navigate to [localhost:5801](http://localhost:8501/) to view the application.
 
 ## Without Docker
 
 ### Create a Virtual Environment (Optional)
 
-It is recommended to use a virtual environment (`venv`, `virtualenv`, `pipenv`, `poetry`) to isolate the project's dependencies and ensure compatibility across different environments. This guide will utilize `venv` as example due to its simplicity to set up and use.
+It is recommended to use a virtual environment (e.g., `venv`, `virtualenv`, `pipenv`, `poetry`) to isolate the project's dependencies and ensure compatibility across different environments. This guide will utilize `venv` as example due to its simplicity to set up and use.
 
 1. **Initiliaze the virtual environment**
 
