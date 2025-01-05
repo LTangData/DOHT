@@ -1,5 +1,7 @@
 
-DOHT
+<div align="center">
+  <img src="./assets/DOHT Logo.png" alt="My Logo">
+</div>
 
 [//]: # (Core dependencies)
 [![Python](https://img.shields.io/badge/python-3.12.8-ffde57?style=flat&logo=python&logoColor=4584b6&logoSize=auto)](https://www.python.org/downloads/release/python-3128/)
