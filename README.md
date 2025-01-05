@@ -1,5 +1,5 @@
 
-## DOHT
+DOHT
 
 [//]: # (Core dependencies)
 [![Python](https://img.shields.io/badge/python-3.12.8-ffde57?style=flat&logo=python&logoColor=4584b6&logoSize=auto)](https://www.python.org/downloads/release/python-3128/)
@@ -29,7 +29,7 @@ Tailored specifically for business use, **dohT** is highly beneficial for non-te
 - **Enhanced efficiency and Time saving**: Accurate information is provided promptly. More effective decision-making is facilitated while conserving technical resources.
 - **Accurate and Contextualized results**: Integrated with powerful LLM, a RAG app delivers precise and context-aware responses. Actionable insights are extracted instead of raw or incomplete data.
 
-## Quickstart
+# Quickstart
 
 This application has been deployed for public access, allowing you to quickly test its functionality.
 
@@ -42,13 +42,13 @@ To ensure the application works seamlessly with your databases:
 - Databases must be hosted on a cloud platform (e.g., AWS RDS, Google Cloud SQL, Azure SQL) or a dedicated server with a public IP address or domain name.
 - Local databases (hosted on your personal machine) are not accessible by deployed services.
 
-## Run Locally
+# Run Locally
 
 With this approach, users will be able to establish connection to their local databases.
 
 To run this project on your local machine, follow these steps:
 
-1. Clone the Repository
+1. **Clone the Repository**
 
     ```terminal
     git clone https://github.com/LTangData/dohT.git
@@ -64,7 +64,7 @@ To run this project on your local machine, follow these steps:
 
     Ensure to replace `<Your_OpenAI_API_key>` with your actual OpenAI API key to enable the application's full functionality. If you don't have one, you can obtain it from [OpenAI's API platform](https://platform.openai.com/api-keys).
 
-### With Docker (recommended)
+## With Docker (recommended)
 
 You must have Docker installed on your machine.
 
@@ -78,19 +78,19 @@ docker compose up
 
 Navigate to [localhost:5801](http://localhost:8501/) to view the application.
 
-### Without Docker
+## Without Docker
 
-#### Create a Virtual Environment (Optional)
+### Create a Virtual Environment (Optional)
 
 It is recommended to use a virtual environment (`venv`) to isolate the project's dependencies and ensure compatibility across different environments.
 
-1. Initiliaze the virtual environment
+1. **Initiliaze the virtual environment**
 
     ```terminal
     python -m venv venv
     ```
 
-2. Activate the virtual environment
+2. **Activate the virtual environment**
 
     On Windows:
 
@@ -104,36 +104,38 @@ It is recommended to use a virtual environment (`venv`) to isolate the project's
     source venv/bin/activate
     ```
 
-#### Package Installation
+### Package Installation
 
 Using `pip`:
 
-```terminal
-pip install -r requirements.txt
-```
+    ```terminal
+    pip install -r requirements.txt
+    ```
 
-#### Start the Application
+### Start the Application
 
 To run the whole application:
 
-```terminal
-start-app
-```
+    ```terminal
+    start-app
+    ```
 
 To run backend and frontend separately:
 
-Backend:
-```terminal
-start-server
-```
+- Backend:
 
-Frontend:
-```terminal
-start-client
-```
+    ```terminal
+    start-server
+    ```
+
+- Frontend:
+
+    ```terminal
+    start-client
+    ```
 
 Navigate to [localhost:5801](http://localhost:8501/) to view the application.
-## Tech Stack
+# Tech Stack
 
 **Client:** Streamlit
 
@@ -145,7 +147,7 @@ Navigate to [localhost:5801](http://localhost:8501/) to view the application.
 
 **DevOps:** Docker, Git, Render, Streamlit Community Cloud
 
-## Acknowledgements
+# Acknowledgements
 
  - [Cookiecutter Data Science template](https://cookiecutter-data-science.drivendata.org/)
  - [README editor](https://readme.so/)
