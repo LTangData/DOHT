@@ -21,7 +21,7 @@
 [//]: # (Licenses)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://github.com/LTangData/GROQ/blob/main/LICENSE.md)
 
-**dohT** is an advanced [Retrieval-Augmented Generation (RAG)](https://www.databricks.com/glossary/retrieval-augmented-generation-rag) application designed to simplify database interaction by eliminating the need for SQL queries. With dohT, users can retrieve precise and relevant information from databases simply by asking natural-language questions. The app leverages the power of [Large Language Model (LLM)](https://aws.amazon.com/what-is/large-language-model/) to interpret user questions, translate them into SQL queries, execute the queries, and return accurate, concise answers in a natural response.
+<span style="color: orange; font-weight: bolder;">dohT</span> is an advanced [Retrieval-Augmented Generation (RAG)](https://www.databricks.com/glossary/retrieval-augmented-generation-rag) application designed to simplify database interaction by eliminating the need for SQL queries. With dohT, users can retrieve precise and relevant information from databases simply by asking natural-language questions. The app leverages the power of [Large Language Model (LLM)](https://aws.amazon.com/what-is/large-language-model/) to interpret user questions, translate them into SQL queries, execute the queries, and return accurate, concise answers in a natural response.
 
 Tailored specifically for business use, **dohT** is highly beneficial for non-technical users:
 
