@@ -108,17 +108,17 @@ It is recommended to use a virtual environment (`venv`) to isolate the project's
 
 Using `pip`:
 
-    ```terminal
-    pip install -r requirements.txt
-    ```
+```terminal
+pip install -r requirements.txt
+```
 
 ### Start the Application
 
 To run the whole application:
 
-    ```terminal
-    start-app
-    ```
+```terminal
+start-app
+```
 
 To run backend and frontend separately:
 
