@@ -80,17 +80,31 @@ Navigate to [localhost:5801](http://localhost:8501/) to view the application.
 
 ### Without Docker
 
-(Optional) It is recommended to create a `venv` to run the project
+#### Create a Virtual Environment (Optional)
+
+It is recommended to use a virtual environment (`venv`) to isolate the project's dependencies and ensure compatibility across different environments.
+
+1. Initiliaze the virtual environment
 
 ```terminal
 python -m venv venv
 ```
 
+2. Activate the virtual environment
+
+On Windows:
+
 ```terminal
 venv\Scripts\activate
 ```
 
-#### Package installation
+On macOS/Linux:
+
+```terminal
+source venv/bin/activate
+```
+
+#### Package Installation
 
 Using `pip`:
 
@@ -98,7 +112,7 @@ Using `pip`:
 pip install -r requirements.txt
 ```
 
-#### Start the application
+#### Start the Application
 
 To run the whole application:
 
