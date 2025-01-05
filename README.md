@@ -6,7 +6,7 @@
 <hr>
 
 <div align="center">
-    <span>*Instantly retrieve helpful information and actionable insights without SQL 🚀*</span>
+    <i>Instantly retrieve helpful information and actionable insights without SQL 🚀</i>
 </div>
 
 [//]: # (Core dependencies)
