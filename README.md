@@ -35,16 +35,12 @@ This application has been deployed for public access, allowing you to quickly te
 
 👉 [Try the App Here](https://ltang-doht.streamlit.app/)
 
+> ⚠️ **HIGHLY IMPORTANT**
 
-<span style="color: red;">HIGHLY IMPORTANT</span>
+> To ensure the application works seamlessly with your databases:
 
-To ensure the application works seamlessly with your own databases:
-
-- Databases must be hosted on a cloud platform (e.g., AWS RDS, Google Cloud SQL, Azure SQL) or a dedicated server with a public IP address or domain name.
-- Local databases (hosted on your personal machine) are not accessible by this application.
-
-> ⚠️ **Important**  
-> The binds system has changed. Instead of doing the name of the key, there are scancodes assigned per key.
+> - Databases must be hosted on a cloud platform (e.g., AWS RDS, Google Cloud SQL, Azure SQL) or a dedicated server with a public IP address or domain name.
+> - Local databases (hosted on your personal machine) are not accessible by this application.
 
 ## Run Locally
 
@@ -54,7 +50,7 @@ To run this project on your local machine, follow these steps:
 
 1. **Clone the Repository**
 
-    ```bash
+    ```
     git clone https://github.com/LTangData/dohT.git
     ```
 2. **Set Up Environement Variables**
