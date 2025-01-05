@@ -50,7 +50,7 @@ To run this project on your local machine, follow these steps:
 
 1. **Clone the Repository**
 
-    ```terminal
+    ```cmd
     git clone https://github.com/LTangData/dohT.git
     ```
 
@@ -72,7 +72,7 @@ You must have Docker installed on your machine.
 
 After installation, in the root directory of the project, run the following command in your terminal:
 
-```terminal
+```cmd
 docker compose up
 ```
 
@@ -82,11 +82,11 @@ Navigate to [localhost:5801](http://localhost:8501/) to view the application.
 
 ### Create a Virtual Environment (Optional)
 
-It is recommended to use a virtual environment (`venv`) to isolate the project's dependencies and ensure compatibility across different environments.
+It is recommended to use a virtual environment (`venv`, `virtualenv`, `pipenv`, `poetry`) to isolate the project's dependencies and ensure compatibility across different environments. This guide will utilize `venv` as example due to its simplicity to set up and use.
 
 1. **Initiliaze the virtual environment**
 
-    ```terminal
+    ```cmd
     python -m venv venv
     ```
 
@@ -94,13 +94,13 @@ It is recommended to use a virtual environment (`venv`) to isolate the project's
 
     On Windows:
 
-    ```terminal
-    venv\Scripts\activate
+    ```cmd
+    venv\Scripts\activate.bat
     ```
 
     On macOS/Linux:
 
-    ```terminal
+    ```bash
     source venv/bin/activate
     ```
 
