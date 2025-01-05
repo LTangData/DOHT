@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="./assets/DOHT Logo.png" alt="My Logo" height=150 width=500>
+  <img src="./assets/DOHT Logo.png" alt="My Logo">
 </div>
 
 #
