@@ -86,23 +86,23 @@ It is recommended to use a virtual environment (`venv`) to isolate the project's
 
 1. Initiliaze the virtual environment
 
-```terminal
-python -m venv venv
-```
+    ```terminal
+    python -m venv venv
+    ```
 
 2. Activate the virtual environment
 
-On Windows:
+    On Windows:
 
-```terminal
-venv\Scripts\activate
-```
+    ```terminal
+    venv\Scripts\activate
+    ```
 
-On macOS/Linux:
+    On macOS/Linux:
 
-```terminal
-source venv/bin/activate
-```
+    ```terminal
+    source venv/bin/activate
+    ```
 
 #### Package Installation
 
