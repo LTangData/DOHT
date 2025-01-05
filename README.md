@@ -76,7 +76,6 @@ After installation, in the root directory of the project, run the following comm
 docker compose up
 ```
 
-> **Notes** <br>
 > Docker containers operate on an isolated network, separate from the host machine's network. To connect to a local database from a container, use `host.docker.internal` instead of `localhost` to correctly route the connection to the host machine. 
 
 Navigate to [localhost:5801](http://localhost:8501/) to view the application.
