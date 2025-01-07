@@ -8,34 +8,60 @@ from API.custom_exceptions import (
     HostPermissionError,
     UnknownDatabaseError
 )
+from API.models import DatabaseConnectionRequest
 
 
-def setup_initial_database(db_user: str, db_password: str, db_host: str, db_port: int, db_name: str) -> SQLDatabase:
+def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
     """
-    Establishes a connection to a MySQL database using the provided credentials and configuration.
+    Establishes a connection to a database using the provided credentials and configuration.
 
     Args:
-        db_user (str): The username for database authentication.
-        db_password (str): The password for database authentication.
-        db_host (str): The host address of the MySQL server.
-        db_port (int): The port number for the MySQL server.
-        db_name (str): The name of the target database.
+        credentials (DatabaseConnectionRequest): An object containing the necessary credentials for database 
+            connection. Expected attributes include:
+            - dbms (str): The type of database management system.
+            - user (str): The username for database authentication.
+            - password (str): The password for database authentication.
+            - host (str): The host address of the database server.
+            - port (int): The port number to connect to the database server.
+            - database (str): The name of the target database.
+            - db_schema (str, optional): The schema to use inside database (specifically for PostgresQL).
 
     Returns:
-        SQLDatabase: An instance of LangChain's `SQLDatabase` connected to the specified MySQL database.
+        SQLDatabase: An instance of LangChain's `SQLDatabase` connected to the specified database.
 
     Raises:
-        DatabaseURIError: If the database URI format is invalid or malformed.
+        DatabaseURIError: If the database URI is invalid or improperly formatted.
         AuthenticationError: If authentication fails due to incorrect credentials.
-        HostPermissionError: If the connection fails due to insufficient host or port permissions.
-        UnknownDatabaseError: If the specified database does not exist or is inaccessible.
+        HostPermissionError: If access is denied due to insufficient host or port permissions.
+        UnknownDatabaseError: If the specified database does not exist or another unknown error occurs.
+
+    Notes:
+        - Supported DBMS values include "MySQL", "PostgreSQL", "SQLite", "MongoDB" and "Redis".
+        - Connection errors are logged with detailed information for troubleshooting.
     """
-    db_uri = f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}?connect_timeout=10"
+    inputs = dict(credentials)
+    dbms = inputs["dbms"]
+    db_user = inputs["user"]
+    db_password = inputs["password"]
+    db_host = inputs["host"]
+    db_port = inputs["port"]
+    db_name = inputs["database"]
+    db_schema = inputs["db_schema"]
+
+    match dbms:
+        case "MySQL":
+            db_uri = f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+        case "PostgreSQL":
+            db_uri = f"postgresql+psycopg2://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+        case "MongoDB":
+            db_uri = f"mongodb://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
     db = None
 
     try:
         db = SQLDatabase.from_uri(db_uri)
-        logger.success("MySQL connection successfully established.")
+        if dbms == "PostgreSQL":
+            db._execute(f"SET search_path TO {db_schema}")
+        logger.success("Database connection successfully established.")
     except ValueError as value_error:
         logger.error(f"Invalid database URI format: {db_uri}. Details:\n{value_error}")
         raise DatabaseURIError(
@@ -59,5 +85,10 @@ def setup_initial_database(db_user: str, db_password: str, db_host: str, db_port
             raise UnknownDatabaseError(
                 "Database not found. Please ensure that the database name is correct or check privileges of current user."
             ) from None
+    except Exception as e:
+        logger.error(f"Failed to establish connection. Details:\n{e}")
+        raise UnknownDatabaseError(
+            "An unexpected error occurred while connecting to the MySQL database. Please ensure that the database is running and accessible."
+        ) from e
 
     return db
