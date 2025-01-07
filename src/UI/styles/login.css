@@ -1,3 +1,12 @@
+/* DBMS DROPDOWN LIST */
+li {
+    color: var(--input-text-color) !important;
+}
+
+li:hover, li[aria-selected="true"] {
+    background-color: var(--input-bg-color) !important;
+}
+
 /* FORM INPUTS */
 .stForm .element-container:not(:last-child) > div > div:nth-child(2) {
     background-color: var(--input-bg-color);
