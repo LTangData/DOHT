@@ -7,8 +7,12 @@ from UI.pages.query_executor import query
 from config.ui_config import STYLES_DIR
 
 
+with open("assets/DOHT Icon.png", "rb") as f:
+    icon = f.read()
+    
 st.set_page_config(
-    page_title="Get Rid of Query"
+    page_title="DOHT",
+    page_icon=icon
 )
 
 def load_css(*files: List[str]) -> None:
