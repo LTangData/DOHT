@@ -14,7 +14,7 @@ from API.custom_exceptions import (
     APIKeyNotFound,
     AgentError
 )
-from API.database import setup_initial_database
+from API.database import connect_to_db
 from API.llm import setup_openai_api
 from API.log_config import configure_logging
 from API.models import (
@@ -42,36 +42,28 @@ PORT = 8000
 connection_exists = False
 
 @app.post("/setup")
-async def initialize_resources(credentials: DatabaseConnectionRequest) -> str:
+async def initialize_resources(db_credentials: DatabaseConnectionRequest) -> str:
     """
-    Sets up the database and LLM resources.
+    Initializes and sets up the database connection, LLM resources, and query agent.
 
     Args:
-        credentials (DatabaseConnectionRequest): Database connection details.
+        db_credentials (DatabaseConnectionRequest): Credentials and configuration for database connection.
 
     Returns:
-        str: "Success" if setup is completed.
+        str: "Success" if the setup is completed successfully.
 
     Raises:
-        HTTPException: If setup fails due to database, LLM or agent issues.
+        HTTPException: Raised if there are issues with the database connection, LLM initialization, or agent setup.
     """
-    input = dict(credentials)
-    db_user = input["user"]
-    db_password = input["password"]
-    db_host = input["host"]
-    db_port = input["port"]
-    db_name = input["database"]
-
     configure_logging(__file__)
 
-    # Used for closing connection
-    global connection_exists, MySQL_database, GPT4o_model, agent_executor
+    global connection_exists, database, GPT4o_model, agent_executor
 
     try:
-        MySQL_database = setup_initial_database(db_user, db_password, db_host, db_port, db_name)
+        database = connect_to_db(db_credentials)
         connection_exists = True
         GPT4o_model = setup_openai_api()
-        agent_executor = create_agent(GPT4o_model, MySQL_database)
+        agent_executor = create_agent(GPT4o_model, database)
         logger.success("Successfully connected to GROQ.")
         return "Success"
     except (DatabaseURIError, AuthenticationError, HostPermissionError, UnknownDatabaseError) as db_error:
@@ -93,16 +85,16 @@ async def initialize_resources(credentials: DatabaseConnectionRequest) -> str:
 @app.post("/query", response_model=QueryResponse)
 async def process_user_query(request: QueryRequest) -> QueryResponse:
     """
-    Processes user queries and returns answers.
+    Handles user queries by passing the input to the query agent and returning the result.
 
     Args:
-        request (QueryRequest): User query input.
+        request (QueryRequest): Contains the user's query or question.
 
     Returns:
-        QueryResponse: Generated answer.
+        QueryResponse: The generated answer or output from the query agent.
 
     Raises:
-        HTTPException: If query processing fails or setup is incomplete.
+        HTTPException: Raised if the query cannot be processed due to incomplete setup or unexpected errors.
     """
     try:
         answer = agent_executor.invoke({"input": request.input})
@@ -117,23 +109,23 @@ async def process_user_query(request: QueryRequest) -> QueryResponse:
 @app.post("/close-connection")
 async def terminate_database_connection() -> str:
     """
-    Closes the active database connection and resets global resources.
+    Safely closes the active database connection and resets global resources.
 
     Terminates the MySQL database connection and clears related global variables. 
     Logs an error and raises an HTTP exception if no connection exists.
 
     Returns:
-        str: Success message when the connection is closed.
+        str: "Success" if the database connection is closed successfully.
 
     Raises:
-        HTTPException: If no active connection exists or an error occurs.
+        HTTPException: Raised if no active connection exists or if an error occurs during termination.
     """
-    global connection_exists, MySQL_database, GPT4o_model, agent_executor
+    global connection_exists, database, GPT4o_model, agent_executor
 
     try:
         if not connection_exists:
             raise NonexistentConnectionError
-        MySQL_database = None
+        database = None
         connection_exists = False
         agent_executor = None
         logger.success("Database connection closed.")
