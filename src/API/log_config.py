@@ -7,13 +7,13 @@ from config.server_config import LOGS_DIR
 
 def configure_logging(file: str) -> None:
     """
-    Configures logging for the application using loguru, creating log files in the "logs" directory (outside of the "src" directory).
+    Sets up application logging using Loguru.
+
+    This function creates the logs directory (if not already present) under API directory and configures Loguru to write logs to a file 
+    named after the script. The logs are formatted with timestamps, log levels, and messages, with a default log level of "INFO."
 
     Args:
-        file (str): The file name where the logging is being configured (usually __file__).
-
-    This function creates the logs directory if it does not exist and ensures that logs are saved in a file named 
-    after the script with a standard log format and log level.
+        file (str): The name of the script file where logging is configured (typically __file__).
     """
     # Define the logs directory path
     logs_dir = Path(LOGS_DIR)
