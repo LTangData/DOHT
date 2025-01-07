@@ -6,7 +6,7 @@
     --error-color: #b41b1b;
     --contrast-color: white;
     --input-bg-color: #232331;
-    --input-text-color: #ffa500;
+    --input-text-color: salmon;
     --focus-bg-color: #090a0f;
     --font-size-base: 1rem; /* 16px */
 }
@@ -20,7 +20,7 @@ h1 {
 }
 
 /* INPUTS */
-input {
+input, .stSelectbox > div > div {
     background-color: var(--input-bg-color) !important;
     caret-color: var(--input-text-color) !important;
     color: var(--input-text-color) !important;
