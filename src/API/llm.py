@@ -13,14 +13,14 @@ from API.custom_exceptions import (
 
 def setup_openai_api() -> ChatOpenAI:
     """
-    Configures and initializes LLM using OpenAI GPT-4o chat model.
+    Initializes and configures the OpenAI GPT-4o chat model for use.
 
     Returns:
-        ChatOpenAI: The configured LLM.
+        ChatOpenAI: An instance of the configured OpenAI GPT-4o model.
 
     Raises:
-        APIKeyNotFound: If the OpenAI API key is missing or not provided.
-        InvalidAPIKey: If the API connection fails due to an invalid API key, network issues, or other API-related errors.
+        APIKeyNotFound: If the OpenAI API key is not provided or missing from the environment.
+        InvalidAPIKey: If the connection to the OpenAI API fails due to an invalid API key, network issues, or other API-related errors.
     """
     if not OPENAI_API_KEY:
         logger.error(f"OpenAI API connection failed. API Key was not provided.")
@@ -30,14 +30,13 @@ def setup_openai_api() -> ChatOpenAI:
     os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
     try:
-        # Initiliaze LLM
         llm = ChatOpenAI(
             model="gpt-4o",
             temperature=0  # Control response randomness
         )
         # Test the API connection with a simple request
         response = llm.invoke("Say Hello")
-        logger.success("OpenAI API successfully initialized.")
+        logger.success("OpenAI API successfully accessed.")
     except OpenAIError as api_error:
         logger.error(f"OpenAI API connection failed. Details: \n{api_error}")
         raise InvalidAPIKey(
