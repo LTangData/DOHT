@@ -50,8 +50,12 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
 
     match dbms:
         case "MySQL":
+            # Consistency across both deployment and local development: pymysql
+            # Best performance: mysqlclient (requires libmysqlclient and a C compiler)
             db_uri = f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
         case "PostgreSQL":
+            # Consistency across both deployment and local development: psycopg2-binary
+            # Best performance: psycopg2 (requires a C compiler, Python header files and PostgreSQL development files)
             db_uri = f"postgresql+psycopg2://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
         case "MongoDB":
             db_uri = f"mongodb://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
