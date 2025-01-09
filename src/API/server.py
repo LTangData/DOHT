@@ -134,7 +134,7 @@ async def terminate_database_connection() -> str:
         logger.error(f"Error while closing the database connection: {nxt_conn_error}")
         raise HTTPException(
             status_code=500,
-            detail="An unexpected error occurred while closing the database connection. Please ensure you have a connection available to be closed."
+            detail="An error occurred while closing the database connection. Please ensure you have a connection available to be closed."
         )
 
 if __name__ == "__main__":
