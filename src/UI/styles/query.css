@@ -13,35 +13,35 @@
 
 /* BUTTONS */
 /* Retrieve button */
-.element-container:nth-child(4) button {
+.element-container:nth-child(5) button {
     background-color: var(--primary-color) !important;
     color: var(--contrast-color) !important;
     outline: none !important;
     transition: 0.3s ease !important;
 }
 
-.element-container:nth-child(4) button:hover, .element-container:nth-child(4) button:focus:hover {
+.element-container:nth-child(5) button:hover, .element-container:nth-child(5) button:focus:hover {
     background-color: var(--secondary-color) !important;
 }
 
-.element-container:nth-child(4) button:focus {
+.element-container:nth-child(5) button:focus {
     background-color: var(--focus-bg-color) !important;
     border: 2px solid var(--primary-color) !important;
 }
 
 /* Disconnect button */
-.element-container:nth-child(5) button {
+.element-container:nth-child(6) button {
     border: 1px solid var(--error-color) !important;
     color: var(--error-color) !important;
     transition: 0.3s ease !important;
 }
 
-.element-container:nth-child(5) button:hover, .element-container:nth-child(5) button:focus {
+.element-container:nth-child(6) button:hover, .element-container:nth-child(6) button:focus {
     background-color: var(--error-color) !important;
     color: var(--contrast-color) !important;
 }
 
 /* RESPONSES */
-.element-container:nth-child(6) p {
+.element-container:nth-child(7) p {
     color: var(--contrast-color) !important;
 }
