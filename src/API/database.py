@@ -16,16 +16,8 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
     Establishes a connection to a database using the provided credentials and configuration.
 
     Args:
-        credentials (DatabaseConnectionRequest): An object containing the necessary credentials for database 
-            connection. Expected attributes include:
-            - dbms (str): The type of database management system.
-            - user (str): The username for database authentication.
-            - password (str): The password for database authentication.
-            - host (str): The host address of the database server.
-            - port (int): The port number to connect to the database server.
-            - database (str): The name of the target database.
-            - db_schema (str, optional): The schema to use inside database (specifically for PostgresQL).
-
+        credentials (DatabaseConnectionRequest): Credentials and configuration for database connection.
+        
     Returns:
         SQLDatabase: An instance of LangChain's `SQLDatabase` connected to the specified database.
 
@@ -41,6 +33,7 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
     """
     inputs = dict(credentials)
     dbms = inputs["dbms"]
+    file_path = inputs["file_path"]
     db_user = inputs["user"]
     db_password = inputs["password"]
     db_host = inputs["host"]
@@ -57,6 +50,9 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
             # Consistency across both deployment and local development: psycopg2-binary
             # Best performance: psycopg2 (requires a C compiler, Python header files and PostgreSQL development files)
             db_uri = f"postgresql+psycopg2://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+        case "SQLite":
+            formatted_path = file_path.replace("\\", "/")
+            db_uri = f"sqlite+pysqlite:///{formatted_path}?mode=rwc&share=private"
         case "MongoDB":
             db_uri = f"mongodb://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
     db = None
