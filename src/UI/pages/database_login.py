@@ -23,20 +23,20 @@ def login():
     )
 
     form = st.form(key="db_connection_form")
+    inputs = {"dbms": dbms}
     if dbms == "SQLite":
-        pass
+        inputs["file_path"] = form.text_input("📤 Upload SQLite file (.sqlite or .db)", placeholder="Provide the path to your SQLite database file 📁")
     else:
-        inputs = {
-            "dbms": dbms,
+        inputs.update({
             "user": form.text_input("🧑 User"),
             "password": form.text_input("🔒 Password", type="password"),
             "host": form.text_input("🖥️ Host"),
             "port": form.number_input("🔌 Port", min_value=0, value=DEFAULT_PORT, step=1),
-            "database": form.text_input("💾 Database")
-        }
+            "database": form.text_input("🗄️ Database")
+        })
 
         if dbms == "PostgreSQL":
-            inputs["db_schema"] = form.text_input("🗂️ Schema", placeholder="public")
+            inputs["db_schema"] = form.text_input("📄 Schema", placeholder="public")
 
     submit = form.form_submit_button("Connect")
 
