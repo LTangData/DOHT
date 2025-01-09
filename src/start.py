@@ -4,7 +4,7 @@ import signal
 
 
 FASTAPI = "src/API/server.py"
-STREAMLIT = "src/UI/app.py"
+STREAMLIT = "src/UI/login.py"
 
 processes = []
 
