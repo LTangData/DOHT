@@ -23,6 +23,7 @@ from API.models import (
     QueryResponse,
 )
 
+
 app = FastAPI()
 
 origins = [
