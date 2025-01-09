@@ -8,9 +8,17 @@ from config.ui_config import API_URL
 QUERY_ENDPOINT = f"{API_URL}/query"
 DISCONNECTION_ENDPOINT = f"{API_URL}/close-connection"
 def query():
-    st.title("dohT")
+    st.markdown("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+    </style>
+    <h1 style="font-family: 'Carter One'">DOHT</h1>    
+    """, unsafe_allow_html=True)
 
-    user_question = st.text_input("Question goes here:")
+    user_question = st.text_input(
+        "❓ Question goes here:",
+        placeholder="Clear and proper word choices result in more accurate results 📈"
+    )
     status_message = st.empty()
     retrieve = st.button("Retrieve")
     disconnect = st.button("Disconnect and Return")
