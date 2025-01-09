@@ -29,6 +29,10 @@ li:hover, li[aria-selected="true"] {
 }
 
 /* INCREASE/DECREASE NUMBER BUTTONS FOR PORT */
+.stNumberInput button {
+    transition: 0.3s ease !important;
+}
+
 .stNumberInput button:hover, .stNumberInput button:focus:hover {
     background-color: var(--primary-color) !important;
 }
