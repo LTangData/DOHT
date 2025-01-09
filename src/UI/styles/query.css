@@ -12,6 +12,7 @@
 }
 
 /* BUTTONS */
+/* Retrieve button */
 .element-container:nth-child(4) button {
     background-color: var(--primary-color) !important;
     color: var(--contrast-color) !important;
@@ -28,6 +29,7 @@
     border: 2px solid var(--primary-color) !important;
 }
 
+/* Disconnect button */
 .element-container:nth-child(5) button {
     border: 1px solid var(--error-color) !important;
     color: var(--error-color) !important;
@@ -40,7 +42,6 @@
 }
 
 /* RESPONSES */
-
 .element-container:nth-child(6) p {
     color: var(--contrast-color) !important;
 }
