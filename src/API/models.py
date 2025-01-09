@@ -6,20 +6,24 @@ class DatabaseConnectionRequest(BaseModel):
     Data model representing the credentials and configuration for establishing a database connection.
 
     Attributes:
-        dbms (str): The type of database management system (e.g., "MySQL", "PostgreSQL", "MongoDB").
-        user (str): The username used for authenticating the database connection.
-        password (str): The password used for authenticating the database connection.
-        host (str): The hostname or IP address of the database server.
-        port (int): The port number to connect to the database (e.g., 3306 for MySQL, 5432 for PostgreSQL).
-        database (str): The name of the database to connect to.
-        db_schema (str | None): The schema to use within the database (specifically for PostgresQL). Defaults to None.
+        dbms (str | None): The type of database management system (e.g., "MySQL", "PostgreSQL", "MongoDB").
+        file_path (str | None): The path to the database file (for connecting to SQLite databases).
+        user (str | None): The username used for authenticating the database connection.
+        password (str | None): The password used for authenticating the database connection.
+        host (str | None): The hostname or IP address of the database server.
+        port (int | None): The port number to connect to the database (e.g., 3306 for MySQL, 5432 for PostgreSQL).
+        database (str | None): The name of the database to connect to.
+        db_schema (str | None): The schema to use within the database (specifically for PostgresQL).
+
+    By default, all attributes have their value set to None.
     """
-    dbms: str
-    user: str
-    password: str
-    host: str
-    port: int
-    database: str
+    dbms: str | None = None
+    file_path: str | None = None
+    user: str | None = None
+    password: str | None = None
+    host: str | None = None
+    port: int | None = None
+    database: str | None = None
     db_schema: str | None = None
 
 class QueryRequest(BaseModel):
