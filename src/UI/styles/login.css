@@ -50,7 +50,7 @@ li:hover, li[aria-selected="true"] {
 
 .stFormSubmitButton button {
     background-color: var(--primary-color) !important;
-    color: white !important;
+    color: var(--contrast-color) !important;
     outline: none !important;
     transition: 0.3s ease !important;
 }
@@ -62,4 +62,28 @@ li:hover, li[aria-selected="true"] {
 .stFormSubmitButton button:focus {
     background-color: var(--focus-bg-color) !important;
     border: 2px solid var(--primary-color) !important;
+}
+
+/* SQLITE */
+
+/* Mode selection */
+.stRadio > div label > div:first-child {
+    background-color: var(--primary-color);
+    transition: 0.3s ease;
+}
+
+.stRadio > div label:hover > div:first-child {
+    background-color: var(--secondary-color);
+}
+
+/* Caption */
+div[data-testid="stCaptionContainer"] > p {
+    color: yellow !important;
+}
+
+div[data-testid="stCaptionContainer"] > p code {
+    color: greenyellow;
+    font-size: 0.9rem !important;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
