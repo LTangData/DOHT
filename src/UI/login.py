@@ -1,3 +1,4 @@
+import os
 import requests
 
 import streamlit as st
@@ -20,6 +21,9 @@ dbms = st.selectbox(
     placeholder="Search"
 )
 
+if dbms == "SQLite":
+    sqlite_mode = st.radio("Select mode", ["Local file", "Volume"], index=0)
+
 DEFAULT_PORT = (
     3306 if dbms == "MySQL" else
     5432 if dbms == "PostgreSQL" else
@@ -30,14 +34,23 @@ DEFAULT_PORT = (
 form = st.form(key="db_connection_form")
 inputs = {"dbms": dbms}
 if dbms == "SQLite":
-    sqlite_mode = form.radio("Select mode", ["Local file", "Volume"], index=0)
     if sqlite_mode == "Local file":
         inputs["file_path"] = form.text_input(
-            "📤 Upload SQLite file (.sqlite or .db)", 
+            "📤 Upload SQLite file path (.sqlite or .db)", 
             placeholder="Provide the path to your SQLite database file 📁"
         )
+        form.caption("""
+            This mode is unavailable if you are accessing the app through `Docker` or public URL (`ltang-doht.streamlit.app`).
+            If you need to proceed with the mentioned approaches, please switch to the `Volume` option.
+        """)
     else:
-        inputs["file_path"] = "Volume selected. Ensure proper configuration."
+        files = [f for f in os.listdir("sqlite_dbs") if os.path.isfile(os.path.join("sqlite_dbs", f))]
+        files.sort()
+        inputs["file_name"] = form.selectbox("🏷️ Name of the SQLite database file (.sqlite or .db)", files)
+        form.caption("""
+            This mode requires you to have your database files (at least one) located inside `sqlite_dbs` folder.
+            All the options available here in the select box are the name of all files present inside `sqlite_dbs`.
+        """)
 else:
     inputs.update({
         "user": form.text_input("🧑 User"),
