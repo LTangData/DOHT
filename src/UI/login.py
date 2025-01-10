@@ -40,8 +40,8 @@ if dbms == "SQLite":
             placeholder="Provide the path to your SQLite database file 📁"
         )
         form.caption("""
-            This mode is unavailable if you are accessing the app through `Docker` or public URL (`ltang-doht.streamlit.app`).
-            If you need to proceed with the mentioned approaches, please switch to the `Volume` option.
+            This mode is unavailable if you are accessing the app through `Docker` or public service (`ltang-doht.streamlit.app`).
+            If you need to proceed with `Docker`, please switch to the `Volume` option.
         """)
     else:
         files = [f for f in os.listdir("sqlite_dbs") if os.path.isfile(os.path.join("sqlite_dbs", f))]
