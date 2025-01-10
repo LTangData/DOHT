@@ -7,7 +7,9 @@ class DatabaseConnectionRequest(BaseModel):
 
     Attributes:
         dbms (str | None): The type of database management system (e.g., "MySQL", "PostgreSQL", "MongoDB").
-        file_path (str | None): The path to the database file (for connecting to SQLite databases).
+        file_path (str | None): The path to the database file (for connecting to SQLite databases using local file path).
+        file_name (str | None): The name of the database file inside sqlite_dbs folder (for connecting to SQLite databases through Docker 
+                                or deployed services).
         user (str | None): The username used for authenticating the database connection.
         password (str | None): The password used for authenticating the database connection.
         host (str | None): The hostname or IP address of the database server.
@@ -19,6 +21,7 @@ class DatabaseConnectionRequest(BaseModel):
     """
     dbms: str | None = None
     file_path: str | None = None
+    file_name: str | None = None
     user: str | None = None
     password: str | None = None
     host: str | None = None
