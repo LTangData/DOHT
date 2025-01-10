@@ -34,6 +34,7 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
     inputs = dict(credentials)
     dbms = inputs["dbms"]
     file_path = inputs["file_path"]
+    file_name = inputs["file_name"]
     db_user = inputs["user"]
     db_password = inputs["password"]
     db_host = inputs["host"]
@@ -51,7 +52,10 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
             # Best performance: psycopg2 (requires a C compiler, Python header files and PostgreSQL development files)
             db_uri = f"postgresql+psycopg2://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
         case "SQLite":
-            formatted_path = file_path.replace("\\", "/")
+            if file_path:
+                formatted_path = file_path.replace("\\", "/")
+            else:
+                formatted_path = f"sqlite_dbs/{file_name}"
             db_uri = f"sqlite+pysqlite:///{formatted_path}?mode=rwc&share=private"
         case "MongoDB":
             db_uri = f"mongodb://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
