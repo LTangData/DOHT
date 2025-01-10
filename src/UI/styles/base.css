@@ -30,3 +30,8 @@ input:-webkit-autofill {
     -webkit-text-fill-color: var(--input-text-color) !important;
     box-shadow: 0 0 0px 1000px var(--input-bg-color) inset;
 }
+
+input::placeholder {
+    color: var(--input-text-color) !important;
+    opacity: 0.5 !important;
+}
