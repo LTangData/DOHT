@@ -1,6 +1,7 @@
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from loguru import logger
 
 from API.agent import create_agent
@@ -9,7 +10,7 @@ from API.custom_exceptions import (
     AuthenticationError,
     HostPermissionError,
     UnknownDatabaseError,
-    NonexistentConnectionError,
+    NonExistentConnectionError,
     InvalidAPIKey,
     APIKeyNotFound,
     AgentError
@@ -64,10 +65,11 @@ async def initialize_resources(db_credentials: DatabaseConnectionRequest) -> str
         database = connect_to_db(db_credentials)
         connection_exists = True
         GPT4o_model = setup_openai_api()
-        agent_executor = create_agent(GPT4o_model, database)
+        toolkit = SQLDatabaseToolkit(db=database, llm=GPT4o_model)
+        agent_executor = create_agent(GPT4o_model, toolkit)
         logger.success("Successfully connected to GROQ.")
         return "Success"
-    except (DatabaseURIError, AuthenticationError, HostPermissionError, UnknownDatabaseError) as db_error:
+    except (DatabaseURIError, AuthenticationError, HostPermissionError, UnknownDatabaseError, Exception) as db_error:
         raise HTTPException(
             status_code=(500 if type(db_error) == DatabaseURIError else 400),
             detail=str(db_error)
@@ -84,7 +86,7 @@ async def initialize_resources(db_credentials: DatabaseConnectionRequest) -> str
         )
 
 @app.post("/query", response_model=QueryResponse)
-async def process_user_query(request: QueryRequest) -> QueryResponse:
+async def query_database(request: QueryRequest) -> QueryResponse:
     """
     Handles user queries by passing the input to the query agent and returning the result.
 
@@ -98,8 +100,8 @@ async def process_user_query(request: QueryRequest) -> QueryResponse:
         HTTPException: Raised if the query cannot be processed due to incomplete setup or unexpected errors.
     """
     try:
-        answer = agent_executor.invoke({"input": request.input})
-        return QueryResponse(output=answer["output"])
+        response = agent_executor.invoke({"input": request.input})
+        return QueryResponse(output=response["output"])
     except Exception as setup_error:
         logger.error(f"Failed to process query. Details:\n {setup_error}")
         raise HTTPException(
@@ -125,13 +127,13 @@ async def terminate_database_connection() -> str:
 
     try:
         if not connection_exists:
-            raise NonexistentConnectionError
+            raise NonExistentConnectionError
         database = None
         connection_exists = False
         agent_executor = None
         logger.success("Database connection closed.")
         return "Success"
-    except NonexistentConnectionError as nxt_conn_error:
+    except NonExistentConnectionError as nxt_conn_error:
         logger.error(f"Error while closing the database connection: {nxt_conn_error}")
         raise HTTPException(
             status_code=500,
