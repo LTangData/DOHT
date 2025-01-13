@@ -15,14 +15,21 @@ SETUP_ENDPOINT = f"{API_URL}/setup"
 
 st.title("Database Connection 🔗")
 
+# DBMS Selection
 dbms = st.selectbox(
     "⚙️ Database management system",
     ["MySQL", "PostgreSQL", "SQLite", "MongoDB", "Redis"],
     placeholder="Search"
 )
-
+inputs = {"dbms": dbms}
 if dbms == "SQLite":
     sqlite_mode = st.radio("Select mode", ["Local file", "Volume"], index=0)
+elif dbms == "MongoDB":
+    inputs["mongodb_connection_type"] = st.radio("Select connection type", ["Local/Custom", "SRV-Compatible"], index=0)
+    st.caption("""
+        `SRV-compatible` connections use the `mongodb+srv` protocol, which simplifies configuration by automatically handling replica sets and load balancing.
+        Note that NOT all cloud platforms support SRV, please verify with your provider if they utilize SRV protocol.
+    """)
 
 DEFAULT_PORT = (
     3306 if dbms == "MySQL" else
@@ -31,11 +38,13 @@ DEFAULT_PORT = (
     6379
 )
 
+# Main form
 form = st.form(key="db_connection_form")
-inputs = {"dbms": dbms}
+form_inputs = {}
+# SQLITE
 if dbms == "SQLite":
     if sqlite_mode == "Local file":
-        inputs["file_path"] = form.text_input(
+        form_inputs["file_path"] = form.text_input(
             "📤 Upload SQLite file path (.sqlite or .db)", 
             placeholder="Provide the path to your SQLite database file 📁"
         )
@@ -46,22 +55,31 @@ if dbms == "SQLite":
     else:
         files = [f for f in os.listdir("sqlite_dbs") if os.path.isfile(os.path.join("sqlite_dbs", f))]
         files.sort()
-        inputs["file_name"] = form.selectbox("🏷️ Name of the SQLite database file (.sqlite or .db)", files)
+        form_inputs["file_name"] = form.selectbox("🏷️ Name of the SQLite database file (.sqlite or .db)", files)
         form.caption("""
             This mode requires you to have your database files (at least one) located inside `sqlite_dbs` folder.
             All the options available here in the select box are the name of all files present inside `sqlite_dbs`.
         """)
+# MYSQL, POSTGRESQL, MONGODB, REDIS
 else:
-    inputs.update({
+    form_inputs.update({
         "user": form.text_input("🧑 User"),
-        "password": form.text_input("🔒 Password", type="password"),
-        "host": form.text_input("🖥️ Host"),
-        "port": form.number_input("🔌 Port", min_value=0, value=DEFAULT_PORT, step=1),
-        "database": form.text_input("🗄️ Database")
+        "password": form.text_input("🔒 Password", type="password")
     })
-
+    if dbms == "MongoDB" and inputs["mongodb_connection_type"] == "SRV-Compatible":
+        form_inputs["cluster"] = form.text_input("🕸️ Cluster URL/Hostname/SRV Record")
+    else:
+        form_inputs.update({
+            "host": form.text_input("🖥️ Host"),
+            "port": form.number_input("🔌 Port", min_value=0, value=DEFAULT_PORT, step=1)
+        })
+    form_inputs["database"] = form.text_input("🗄️ Database")
     if dbms == "PostgreSQL":
-        inputs["db_schema"] = form.text_input("📄 Schema", placeholder="public")
+        form_inputs["db_schema"] = form.text_input("📄 Schema", placeholder="public")
+    elif dbms == "MongoDB":
+        form_inputs["db_collection"] = form.text_input("📚 Collection")
+
+inputs.update(form_inputs)
 
 submit = form.form_submit_button("Connect")
 
@@ -70,6 +88,7 @@ if submit:
     if not missing_fields:
         response = requests.post(SETUP_ENDPOINT, json=inputs)
         if response.status_code == 200:
+            form_inputs.clear()
             inputs.clear()
             st.switch_page("pages/query.py")
         else:
