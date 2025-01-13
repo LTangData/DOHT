@@ -17,11 +17,10 @@
 
 [//]: # (DBMS available)
 [![MySQL](https://img.shields.io/badge/MySQL-available-darkgreen?style=flat&logo=mysql&logoColor=F29111&logoSize=auto)](https://www.mysql.com/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-developing-blue?style=flat&logo=postgresql&logoColor=008bb9&logoSize=auto)](https://www.postgresql.org/)
-[![Microsoft SQL Server](https://img.shields.io/badge/SQL%20Server-developing-blue?style=flat)](https://www.microsoft.com/en-ca/sql-server/sql-server-downloads)
-[![SQLite](https://img.shields.io/badge/SQLite-developing-blue?style=flat&logo=sqlite&logoColor=5db1e4&logoSize=auto)](https://www.sqlite.org/)
-[![Oracle Database](https://img.shields.io/badge/Oracle%20Database-unavailable-red?style=flat)]()
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-available-darkgreen?style=flat&logo=postgresql&logoColor=008bb9&logoSize=auto)](https://www.postgresql.org/)
+[![SQLite](https://img.shields.io/badge/SQLite-available-darkgreen?style=flat&logo=sqlite&logoColor=5db1e4&logoSize=auto)](https://www.sqlite.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-developing-blue?style=flat&logo=mongodb&logoColor=3FA037&logoSize=auto)](https://www.mongodb.com/)
+[![Redis](https://img.shields.io/badge/Redis-developing-blue?style=flat&logo=redis&logoColor=FF4438&logoSize=auto)](https://www.mongodb.com/)
 
 [//]: # (Deployment)
 [![Docker](https://img.shields.io/badge/Docker-deployed-darkgreen?style=flat&logo=docker&logoColor=0db7ed&logoSize=auto)](https://www.docker.com/)
@@ -31,9 +30,9 @@
 [//]: # (Licenses)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://github.com/LTangData/GROQ/blob/main/LICENSE.md)
 
-**dohT** is an advanced [Retrieval-Augmented Generation (RAG)](https://www.databricks.com/glossary/retrieval-augmented-generation-rag) application designed to simplify database interaction by eliminating the need for SQL queries. With dohT, users can retrieve precise and relevant information from databases simply by asking natural-language questions. The app leverages the power of [Large Language Model (LLM)](https://aws.amazon.com/what-is/large-language-model/) to interpret user questions, translate them into SQL queries, execute the queries, and return accurate, concise answers in a natural response.
+**DOHT** is an advanced [Retrieval-Augmented Generation (RAG)](https://www.databricks.com/glossary/retrieval-augmented-generation-rag) application designed to simplify database interaction by eliminating the need for SQL queries. With **DOHT**, users can retrieve precise and relevant information from databases simply by asking natural-language questions. The app leverages the power of [Large Language Model (LLM)](https://aws.amazon.com/what-is/large-language-model/) to interpret user questions, translate them into SQL queries, execute the queries, and return accurate, concise answers in a natural response.
 
-Tailored specifically for business use, **dohT** is highly beneficial for non-technical users:
+Tailored specifically for business use, **DOHT** is highly beneficial for non-technical users:
 
 - **Ease of Use**: Eliminating the need to learn SQL, users can interact with database using everyday language.
 - **Enhanced efficiency and Time saving**: Accurate information is provided promptly. More effective decision-making is facilitated while conserving technical resources.
@@ -147,6 +146,7 @@ To run backend and frontend separately:
     ```
 
 Navigate to [localhost:5801](http://localhost:8501/) to view the application.
+
 # Tech Stack
 
 **Client:** Streamlit
@@ -164,4 +164,3 @@ Navigate to [localhost:5801](http://localhost:8501/) to view the application.
  - [Cookiecutter Data Science template](https://cookiecutter-data-science.drivendata.org/)
  - [README editor](https://readme.so/)
  - [LangChain tutorial on Question/Answering system](https://python.langchain.com/docs/tutorials/sql_qa/)
-
