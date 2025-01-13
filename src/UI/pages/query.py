@@ -49,6 +49,6 @@ if retrieve or (user_question and user_question != st.session_state.get("last_qu
 if disconnect:
     disc_response = requests.post(DISCONNECTION_ENDPOINT)
     if disc_response.status_code == 200:
-            st.switch_page("login.py")
+            st.switch_page("app.py")
     else:
         st.error(disc_response.json()["detail"])
