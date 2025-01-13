@@ -20,14 +20,17 @@ class DatabaseConnectionRequest(BaseModel):
     By default, all attributes have their value set to None.
     """
     dbms: str | None = None
+    mgdb_connection_type: str | None = None
     file_path: str | None = None
     file_name: str | None = None
     user: str | None = None
     password: str | None = None
+    cluster: str | None = None
     host: str | None = None
     port: int | None = None
     database: str | None = None
     db_schema: str | None = None
+    db_collection: str | None = None
 
 class QueryRequest(BaseModel):
     """
