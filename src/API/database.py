@@ -23,9 +23,9 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
 
     Raises:
         DatabaseURIError: If the database URI is invalid or improperly formatted.
-        AuthenticationError: If authentication fails due to incorrect credentials.
+        AuthenticationError: If authentication fails due to incorrect user or password.
         HostPermissionError: If access is denied due to insufficient host or port permissions.
-        UnknownDatabaseError: If the specified database does not exist or another unknown error occurs.
+        UnknownDatabaseError: If the specified database does not exist.
 
     Notes:
         - Supported DBMS values include "MySQL", "PostgreSQL", "SQLite", "MongoDB" and "Redis".
@@ -33,14 +33,17 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
     """
     inputs = dict(credentials)
     dbms = inputs["dbms"]
+    mgdb_connection_type = inputs["mgdb_connection_type"]
     file_path = inputs["file_path"]
     file_name = inputs["file_name"]
     db_user = inputs["user"]
     db_password = inputs["password"]
+    cluster_url = inputs["cluster"]
     db_host = inputs["host"]
     db_port = inputs["port"]
     db_name = inputs["database"]
     db_schema = inputs["db_schema"]
+    db_collection = inputs["db_collection"]
 
     match dbms:
         case "MySQL":
@@ -58,13 +61,19 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
                 formatted_path = f"sqlite_dbs/{file_name}"
             db_uri = f"sqlite+pysqlite:///{formatted_path}?mode=rwc&share=private"
         case "MongoDB":
-            db_uri = f"mongodb://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+            if mgdb_connection_type == "Local/Custom":
+                db_uri = f"mongodb://{db_user}:{db_password}@{db_host}:{db_port}"
+            else:
+                db_uri = f"mongodb+srv://{db_user}:{db_password}@{cluster_url}"
     db = None
 
     try:
-        db = SQLDatabase.from_uri(db_uri)
-        if dbms == "PostgreSQL":
-            db._execute(f"SET search_path TO {db_schema}")
+        if dbms == "MongoDB":
+            pass
+        else:
+            db = SQLDatabase.from_uri(db_uri)
+            if dbms == "PostgreSQL":
+                db._execute(f"SET search_path TO {db_schema}")
         logger.success("Database connection successfully established.")
     except ValueError as value_error:
         logger.error(f"Invalid database URI format: {db_uri}. Details:\n{value_error}")
@@ -91,7 +100,7 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
             ) from None
     except Exception as e:
         logger.error(f"Failed to establish connection. Details:\n{e}")
-        raise UnknownDatabaseError(
+        raise Exception(
             "An unexpected error occurred while connecting to the MySQL database. Please ensure that the database is running and accessible."
         ) from e
 
