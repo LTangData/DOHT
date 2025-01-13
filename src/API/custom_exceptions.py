@@ -29,8 +29,8 @@ class UnknownDatabaseError(DatabaseConnectionError):
     """Raised when there are problems related to user permission on database and tables."""
     pass
 
-class NonexistentConnectionError(DatabaseConnectionError):
-    """Raised when a database connection is already established."""
+class NonExistentConnectionError(DatabaseConnectionError):
+    """Raised when no database connection exists but a close request is sent."""
     pass
 
 class InvalidAPIKey(LLMError):
