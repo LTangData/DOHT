@@ -19,8 +19,6 @@
 [![MySQL](https://img.shields.io/badge/MySQL-available-darkgreen?style=flat&logo=mysql&logoColor=F29111&logoSize=auto)](https://www.mysql.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-available-darkgreen?style=flat&logo=postgresql&logoColor=008bb9&logoSize=auto)](https://www.postgresql.org/)
 [![SQLite](https://img.shields.io/badge/SQLite-available-darkgreen?style=flat&logo=sqlite&logoColor=5db1e4&logoSize=auto)](https://www.sqlite.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-developing-blue?style=flat&logo=mongodb&logoColor=3FA037&logoSize=auto)](https://www.mongodb.com/)
-[![Redis](https://img.shields.io/badge/Redis-developing-blue?style=flat&logo=redis&logoColor=FF4438&logoSize=auto)](https://www.mongodb.com/)
 
 [//]: # (Deployment)
 [![Docker](https://img.shields.io/badge/Docker-deployed-darkgreen?style=flat&logo=docker&logoColor=0db7ed&logoSize=auto)](https://www.docker.com/)
