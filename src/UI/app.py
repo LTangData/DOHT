@@ -46,9 +46,12 @@ if dbms == "SQLite":
             If you need to proceed with `Docker`, please switch to the `Volume` mode.
         """)
     else:
-        files = [f for f in os.listdir("sqlite_dbs") if os.path.isfile(os.path.join("sqlite_dbs", f))]
-        files.sort()
-        inputs["file_name"] = form.selectbox("🏷️ Name of the SQLite database file (.sqlite or .db)", files)
+        try:
+            files = [f for f in os.listdir("sqlite_dbs") if os.path.isfile(os.path.join("sqlite_dbs", f))]
+            files.sort()
+            inputs["file_name"] = form.selectbox("🏷️ Name of the SQLite database file (.sqlite or .db)", files)
+        except:
+            form.error("This mode is only available when running this app through `Docker` or local machine and `sqlite_dbs` folder must be present in the root directory")
         form.caption("""
             This mode is unavailable if you are accessing the app through public service (`ltang-doht.streamlit.app`).
             This mode requires you to have your database files (at least one) inside `sqlite_dbs` folder, which you will need to create manually.
