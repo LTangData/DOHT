@@ -6,7 +6,7 @@ class DatabaseConnectionRequest(BaseModel):
     Data model representing the credentials and configuration for establishing a database connection.
 
     Attributes:
-        dbms (str | None): The type of database management system (e.g., "MySQL", "PostgreSQL", "MongoDB").
+        dbms (str | None): The type of database management system.
         file_path (str | None): The path to the database file (for connecting to SQLite databases using local file path).
         file_name (str | None): The name of the database file inside sqlite_dbs folder (for connecting to SQLite databases through Docker 
                                 or deployed services).
@@ -20,17 +20,14 @@ class DatabaseConnectionRequest(BaseModel):
     By default, all attributes have their value set to None.
     """
     dbms: str | None = None
-    mgdb_connection_type: str | None = None
     file_path: str | None = None
     file_name: str | None = None
     user: str | None = None
     password: str | None = None
-    cluster: str | None = None
     host: str | None = None
     port: int | None = None
     database: str | None = None
     db_schema: str | None = None
-    db_collection: str | None = None
 
 class QueryRequest(BaseModel):
     """
