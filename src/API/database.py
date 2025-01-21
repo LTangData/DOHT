@@ -28,22 +28,19 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
         UnknownDatabaseError: If the specified database does not exist.
 
     Notes:
-        - Supported DBMS values include "MySQL", "PostgreSQL", "SQLite", "MongoDB" and "Redis".
+        - Supported DBMS values include "MySQL", "PostgreSQL" and "SQLite".
         - Connection errors are logged with detailed information for troubleshooting.
     """
     inputs = dict(credentials)
     dbms = inputs["dbms"]
-    mgdb_connection_type = inputs["mgdb_connection_type"]
     file_path = inputs["file_path"]
     file_name = inputs["file_name"]
     db_user = inputs["user"]
     db_password = inputs["password"]
-    cluster_url = inputs["cluster"]
     db_host = inputs["host"]
     db_port = inputs["port"]
     db_name = inputs["database"]
     db_schema = inputs["db_schema"]
-    db_collection = inputs["db_collection"]
 
     match dbms:
         case "MySQL":
@@ -60,20 +57,12 @@ def connect_to_db(credentials: DatabaseConnectionRequest) -> SQLDatabase:
             else:
                 formatted_path = f"sqlite_dbs/{file_name}"
             db_uri = f"sqlite+pysqlite:///{formatted_path}?mode=rwc&share=private"
-        case "MongoDB":
-            if mgdb_connection_type == "Local/Custom":
-                db_uri = f"mongodb://{db_user}:{db_password}@{db_host}:{db_port}"
-            else:
-                db_uri = f"mongodb+srv://{db_user}:{db_password}@{cluster_url}"
     db = None
 
     try:
-        if dbms == "MongoDB":
-            pass
-        else:
-            db = SQLDatabase.from_uri(db_uri)
-            if dbms == "PostgreSQL":
-                db._execute(f"SET search_path TO {db_schema}")
+        db = SQLDatabase.from_uri(db_uri)
+        if dbms == "PostgreSQL":
+            db._execute(f"SET search_path TO {db_schema}")
         logger.success("Database connection successfully established.")
     except ValueError as value_error:
         logger.error(f"Invalid database URI format: {db_uri}. Details:\n{value_error}")
