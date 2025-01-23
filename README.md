@@ -151,7 +151,7 @@ Navigate to [localhost:5801](http://localhost:8501/) to view the application.
 
 **Server:** FastAPI
 
-**Database:** MySQL, Chroma
+**Database:** MySQL, PostgreSQL, SQLite, Chroma
 
 **AI Solutions:** OpenAI API, LangChain
 
