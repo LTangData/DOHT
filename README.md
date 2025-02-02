@@ -45,14 +45,14 @@ MySQL
   <img src="./assets/MySQL demonstration.png" alt="My Logo">
 </div>
 
-<hr>
+#
 
 PostgreSQL
 <div align="center">
   <img src="./assets/PostgreSQL demonstration.png" alt="My Logo">
 </div>
 
-<hr>
+#
 
 SQLite
 <div align="center">
