@@ -36,6 +36,35 @@ Tailored specifically for business use, **DOHT** is highly beneficial for non-te
 - **Enhanced efficiency and Time saving**: Accurate information is provided promptly. More effective decision-making is facilitated while conserving technical resources.
 - **Accurate and Contextualized results**: Integrated with powerful LLM, a RAG app delivers precise and context-aware responses. Actionable insights are extracted instead of raw or incomplete data.
 
+# Quick Overview
+
+## Credential Entry
+
+MySQL
+<div align="center">
+  <img src="./assets/MySQL demonstration.png" alt="My Logo">
+</div>
+
+<hr>
+
+PostgreSQL
+<div align="center">
+  <img src="./assets/PostgreSQL demonstration.png" alt="My Logo">
+</div>
+
+<hr>
+
+SQLite
+<div align="center">
+  <img src="./assets/SQLite demonstration.png" alt="My Logo">
+</div>
+
+## Query
+
+<div align="center">
+  <img src="./assets/Query demonstration.png" alt="My Logo">
+</div>
+
 # Quickstart
 
 This application has been deployed for public access, allowing you to quickly test its functionality.
